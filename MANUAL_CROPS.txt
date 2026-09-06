@@ -1,0 +1,16 @@
+Manual crop data status
+=======================
+
+This build has the user's latest exported crop JSON baked directly into the game:
+- 150 Pokémon sprite crops
+- 8 Gym Leader portrait crops
+
+The standalone editor is CROP_EDITOR.html.
+
+Export button fix:
+- EXPORT DATA now fills the text box visibly
+- selects the JSON text
+- attempts to copy it to the clipboard
+- attempts to download tetris-catch-manual-crops.json as a fallback
+
+If the browser blocks clipboard or download permissions, the JSON will still be visible and selected in the text box so it can be copied manually.
