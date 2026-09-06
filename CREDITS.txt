@@ -37,3 +37,46 @@ https://x.com/PhilDragash/status/964479868615495681
 
 The game references the public image at runtime and links back to the artist's post.
 No ownership of that artwork is claimed by this project.
+
+CLASSICAL CHIPTUNE SOUNDTRACK
+=============================
+The soundtrack consists of original in-game chiptune arrangements created for this project from public-domain classical compositions. The browser synthesizes them live; no modern orchestra recordings and no official Pokémon music are included.
+
+TITLE — W. A. Mozart, Eine kleine Nachtmusik, K. 525, I. Allegro
+Public-domain score reference: Mutopia Project, Music ID 900
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=900
+
+BROCK — Edvard Grieg, In the Hall of the Mountain King, Op. 46 No. 4
+Public-domain score reference: Mutopia Project, Music ID 1888
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1888
+
+MISTY — Camille Saint-Saëns, Aquarium, The Carnival of the Animals
+Composition first published in the 19th century; arrangement/audio in this project is newly synthesized.
+
+LT. SURGE — Antonio Vivaldi, Summer, III. Presto, RV 315
+Public-domain original composition / score reference:
+https://imslp.org/wiki/Violin_Concerto_in_G_minor%2C_RV_315_%28Vivaldi%2C_Antonio%29
+
+ERIKA — Pyotr Ilyich Tchaikovsky, Waltz of the Flowers, The Nutcracker, Op. 71
+Public-domain original composition; arrangement/audio in this project is newly synthesized.
+
+KOGA — J. S. Bach, Toccata and Fugue in D Minor, BWV 565
+Public-domain score reference: Mutopia Project, Music ID 1780
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=1780
+
+SABRINA — Ludwig van Beethoven, Piano Sonata No. 14 "Moonlight", III. Presto agitato
+The Beethoven composition is public domain; this game's arrangement/audio is newly synthesized.
+
+BLAINE — Antonio Vivaldi, Winter, I. Allegro non molto, RV 297
+Public-domain original composition / score reference:
+https://imslp.org/wiki/Winter_%28Vivaldi%2C_Antonio%29
+
+GIOVANNI — W. A. Mozart, Requiem in D Minor, K. 626, Dies Irae
+Public-domain score reference: Mutopia Project, Music ID 364
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=364
+
+VICTORY — Ludwig van Beethoven, Ode to Joy
+Public-domain score reference: Mutopia Project, Music ID 528
+https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=528
+
+Chiptune arrangement / Web Audio synthesis: Kanto Tetris project, 2026.
