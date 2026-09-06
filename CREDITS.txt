@@ -1,0 +1,39 @@
+TETRIS CATCH: KANTO 150 — FAN ART CREDITS
+================================================
+
+This build is a NON-COMMERCIAL fan-game prototype.
+
+POKÉMON SPRITE ART
+Artist: Willibab
+Work: "151"
+Source:
+https://www.deviantart.com/willibab/art/151-1240986192
+
+Published reuse statement on the deviation:
+"Free for anyone to use, with credit ofc."
+
+GYM BADGE ART
+Artist: Falke2009
+Work: "Kanto Gym Badge Icons"
+Source:
+https://www.deviantart.com/falke2009/art/Kanto-Gym-Badge-Icons-483144261
+
+Published reuse statement on the deviation says the artwork may be used
+for projects/art with credit.
+
+IMPLEMENTATION NOTE
+The game references the artists' hosted image files at runtime rather than
+silently repackaging unrelated DeviantArt works. An internet connection is
+required for the fan-art portraits and badge art to load.
+
+Pokémon and the underlying Pokémon / Kanto badge designs belong to their
+respective rights holders. This project is unofficial and non-commercial.
+
+GYM LEADER FAN ART
+Artist: PhilDragash
+Work: Kanto Gym Leader fan-art set
+Source:
+https://x.com/PhilDragash/status/964479868615495681
+
+The game references the public image at runtime and links back to the artist's post.
+No ownership of that artwork is claimed by this project.
