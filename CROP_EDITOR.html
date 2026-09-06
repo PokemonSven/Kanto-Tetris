@@ -1,0 +1,1093 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tetris Catch Manual Crop Editor</title>
+<style>
+:root{--ink:#071821;--screen:#e0f8cf;--mid:#c9e8ae;--cream:#fff8dc;--gold:#ffcb05;--red:#c94c4c;--blue:#2d62b4}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#1d2d44,#071821);color:var(--ink);font-family:Impact,"Arial Black",system-ui,sans-serif;letter-spacing:.01em}button,select,input,textarea{font:inherit}.wrap{padding:14px;max-width:1320px;margin:0 auto}.hero{background:var(--screen);border:5px solid var(--ink);box-shadow:8px 8px 0 #000;padding:14px;margin-bottom:12px}.hero-row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}h1{font-size:1.55rem;margin:0 0 4px;color:#173571;text-shadow:2px 2px var(--gold)}.sub{font-size:.78rem;line-height:1.45;max-width:850px}.btn{border:3px solid var(--ink);background:var(--cream);padding:10px 12px;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}.btn.primary{background:var(--gold)}.btn.active{background:#9bd67e}.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--cream);border:4px solid var(--ink);padding:10px;margin-bottom:12px}select{min-width:260px;max-width:100%;border:3px solid var(--ink);background:white;padding:9px}.status{font-size:.78rem;color:#421417;font-weight:900}.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:12px;align-items:start}.sheet-card,.side-card{background:var(--screen);border:5px solid var(--ink);box-shadow:7px 7px 0 #000;padding:10px}.sheet-note{font-size:.72rem;line-height:1.45;margin-bottom:8px}.sheet-wrap{position:relative;overflow:auto;max-height:68vh;background:#b8dca3;border:3px solid var(--ink);cursor:crosshair}.stage{position:relative;display:inline-block;min-width:100%;line-height:0}img{display:block;image-rendering:pixelated;max-width:none;transform-origin:top left}.crop-box{position:absolute;border:4px solid var(--gold);box-shadow:0 0 0 3px var(--ink),0 0 18px var(--gold);background:rgba(255,203,5,.12);pointer-events:none}.preview-wrap{display:grid;place-items:center;background:#f8f3d7;border:3px solid var(--ink);padding:10px;margin-bottom:10px}canvas{width:192px;height:192px;image-rendering:pixelated;background:#c9e8ae;border:3px solid var(--ink)}.readout{font-size:.85rem;line-height:1.35;margin:8px 0}.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}label{font-size:.72rem;font-weight:900}input{width:100%;border:3px solid var(--ink);background:white;padding:8px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}textarea{width:100%;min-height:140px;margin-top:10px;border:3px solid var(--ink);background:#fff;color:#111;font-family:Consolas,monospace;font-size:.7rem;padding:8px}.help{font-size:.68rem;line-height:1.5;margin-top:8px}.linkrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}a.btn{text-decoration:none;color:var(--ink);display:inline-block}.leader-badge{display:inline-block;padding:2px 6px;background:#173571;color:white;border:2px solid var(--ink);font-size:.62rem;margin-left:4px}@media(max-width:900px){.layout{grid-template-columns:1fr}.side-card{order:-1}.sheet-wrap{max-height:56vh}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-row">
+      <div><h1>MANUAL SPRITE CROP EDITOR</h1><div class="sub">This is the standalone editor. The full uncropped sheet is shown below. Pick a Pokémon or Gym Leader, drag a crop rectangle, preview it, then save/export the JSON.</div></div>
+      <div class="linkrow"><a class="btn" href="index.html">← OPEN GAME</a><a class="btn primary" href="index.html#crop-editor">OPEN IN-GAME EDITOR</a></div>
+    </div>
+  </section>
+  <div class="toolbar">
+    <button class="btn active" id="modePokemon" type="button">POKéMON SHEET</button>
+    <button class="btn" id="modeLeaders" type="button">GYM LEADERS</button>
+    <button class="btn" id="prev" type="button">◀ PREV</button>
+    <select id="subject" aria-label="Sprite to crop"></select>
+    <button class="btn" id="next" type="button">NEXT ▶</button>
+    <button class="btn" id="zoomOut" type="button">ZOOM -</button>
+    <button class="btn" id="zoomIn" type="button">ZOOM +</button>
+    <span class="status" id="status">Loading sheet…</span>
+  </div>
+  <main class="layout">
+    <section class="sheet-card">
+      <div class="sheet-note" id="sheetNote">Pokémon mode: full uncropped 1792×448 Kanto sheet. Drag from top-left to bottom-right around the selected sprite.</div>
+      <div class="sheet-wrap" id="sheetWrap">
+        <div class="stage" id="stage">
+          <img id="sheetImg" alt="Full uncropped sprite sheet">
+          <div class="crop-box" id="cropBox"></div>
+        </div>
+      </div>
+    </section>
+    <aside class="side-card">
+      <div class="preview-wrap"><canvas id="preview" width="192" height="192"></canvas></div>
+      <div class="readout" id="readout">---</div>
+      <div class="fields">
+        <label>X<input id="cropX" type="number" step="1" min="0"></label>
+        <label>Y<input id="cropY" type="number" step="1" min="0"></label>
+        <label>W<input id="cropW" type="number" step="1" min="1"></label>
+        <label>H<input id="cropH" type="number" step="1" min="1"></label>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="save" type="button">SAVE CROP</button>
+        <button class="btn" id="resetOne" type="button">RESET ONE</button>
+        <button class="btn" id="exportBtn" type="button">EXPORT DATA</button>
+        <button class="btn" id="importBtn" type="button">IMPORT DATA</button>
+      </div>
+      <textarea id="exportBox" spellcheck="false" placeholder="Exported crop JSON appears here. Paste JSON here and click IMPORT DATA to restore crops."></textarea>
+      <div class="help">Saved crops are browser-local and do not persist between devices. <b>EXPORT DATA</b> now fills/selects the box below, tries to copy it, and downloads <b>tetris-catch-manual-crops.json</b>. Pokémon crops use the 1792×448 coordinate system; Gym Leader crops use that sheet's natural pixel size.</div>
+    </aside>
+  </main>
+</div>
+<script>
+(() => {
+const MONS=[{"dex":1,"name":"Bulbasaur","type":"Grass"},{"dex":2,"name":"Ivysaur","type":"Grass"},{"dex":3,"name":"Venusaur","type":"Grass"},{"dex":4,"name":"Charmander","type":"Fire"},{"dex":5,"name":"Charmeleon","type":"Fire"},{"dex":6,"name":"Charizard","type":"Fire"},{"dex":7,"name":"Squirtle","type":"Water"},{"dex":8,"name":"Wartortle","type":"Water"},{"dex":9,"name":"Blastoise","type":"Water"},{"dex":10,"name":"Caterpie","type":"Bug"},{"dex":11,"name":"Metapod","type":"Bug"},{"dex":12,"name":"Butterfree","type":"Bug"},{"dex":13,"name":"Weedle","type":"Bug"},{"dex":14,"name":"Kakuna","type":"Bug"},{"dex":15,"name":"Beedrill","type":"Bug"},{"dex":16,"name":"Pidgey","type":"Normal"},{"dex":17,"name":"Pidgeotto","type":"Normal"},{"dex":18,"name":"Pidgeot","type":"Normal"},{"dex":19,"name":"Rattata","type":"Normal"},{"dex":20,"name":"Raticate","type":"Normal"},{"dex":21,"name":"Spearow","type":"Normal"},{"dex":22,"name":"Fearow","type":"Normal"},{"dex":23,"name":"Ekans","type":"Poison"},{"dex":24,"name":"Arbok","type":"Poison"},{"dex":25,"name":"Pikachu","type":"Electric"},{"dex":26,"name":"Raichu","type":"Electric"},{"dex":27,"name":"Sandshrew","type":"Ground"},{"dex":28,"name":"Sandslash","type":"Ground"},{"dex":29,"name":"Nidoran♀","type":"Poison"},{"dex":30,"name":"Nidorina","type":"Poison"},{"dex":31,"name":"Nidoqueen","type":"Poison"},{"dex":32,"name":"Nidoran♂","type":"Poison"},{"dex":33,"name":"Nidorino","type":"Poison"},{"dex":34,"name":"Nidoking","type":"Poison"},{"dex":35,"name":"Clefairy","type":"Normal"},{"dex":36,"name":"Clefable","type":"Normal"},{"dex":37,"name":"Vulpix","type":"Fire"},{"dex":38,"name":"Ninetales","type":"Fire"},{"dex":39,"name":"Jigglypuff","type":"Normal"},{"dex":40,"name":"Wigglytuff","type":"Normal"},{"dex":41,"name":"Zubat","type":"Poison"},{"dex":42,"name":"Golbat","type":"Poison"},{"dex":43,"name":"Oddish","type":"Grass"},{"dex":44,"name":"Gloom","type":"Grass"},{"dex":45,"name":"Vileplume","type":"Grass"},{"dex":46,"name":"Paras","type":"Bug"},{"dex":47,"name":"Parasect","type":"Bug"},{"dex":48,"name":"Venonat","type":"Bug"},{"dex":49,"name":"Venomoth","type":"Bug"},{"dex":50,"name":"Diglett","type":"Ground"},{"dex":51,"name":"Dugtrio","type":"Ground"},{"dex":52,"name":"Meowth","type":"Normal"},{"dex":53,"name":"Persian","type":"Normal"},{"dex":54,"name":"Psyduck","type":"Water"},{"dex":55,"name":"Golduck","type":"Water"},{"dex":56,"name":"Mankey","type":"Fighting"},{"dex":57,"name":"Primeape","type":"Fighting"},{"dex":58,"name":"Growlithe","type":"Fire"},{"dex":59,"name":"Arcanine","type":"Fire"},{"dex":60,"name":"Poliwag","type":"Water"},{"dex":61,"name":"Poliwhirl","type":"Water"},{"dex":62,"name":"Poliwrath","type":"Water"},{"dex":63,"name":"Abra","type":"Psychic"},{"dex":64,"name":"Kadabra","type":"Psychic"},{"dex":65,"name":"Alakazam","type":"Psychic"},{"dex":66,"name":"Machop","type":"Fighting"},{"dex":67,"name":"Machoke","type":"Fighting"},{"dex":68,"name":"Machamp","type":"Fighting"},{"dex":69,"name":"Bellsprout","type":"Grass"},{"dex":70,"name":"Weepinbell","type":"Grass"},{"dex":71,"name":"Victreebel","type":"Grass"},{"dex":72,"name":"Tentacool","type":"Water"},{"dex":73,"name":"Tentacruel","type":"Water"},{"dex":74,"name":"Geodude","type":"Rock"},{"dex":75,"name":"Graveler","type":"Rock"},{"dex":76,"name":"Golem","type":"Rock"},{"dex":77,"name":"Ponyta","type":"Fire"},{"dex":78,"name":"Rapidash","type":"Fire"},{"dex":79,"name":"Slowpoke","type":"Water"},{"dex":80,"name":"Slowbro","type":"Water"},{"dex":81,"name":"Magnemite","type":"Electric"},{"dex":82,"name":"Magneton","type":"Electric"},{"dex":83,"name":"Farfetch'd","type":"Normal"},{"dex":84,"name":"Doduo","type":"Normal"},{"dex":85,"name":"Dodrio","type":"Normal"},{"dex":86,"name":"Seel","type":"Water"},{"dex":87,"name":"Dewgong","type":"Water"},{"dex":88,"name":"Grimer","type":"Poison"},{"dex":89,"name":"Muk","type":"Poison"},{"dex":90,"name":"Shellder","type":"Water"},{"dex":91,"name":"Cloyster","type":"Water"},{"dex":92,"name":"Gastly","type":"Ghost"},{"dex":93,"name":"Haunter","type":"Ghost"},{"dex":94,"name":"Gengar","type":"Ghost"},{"dex":95,"name":"Onix","type":"Rock"},{"dex":96,"name":"Drowzee","type":"Psychic"},{"dex":97,"name":"Hypno","type":"Psychic"},{"dex":98,"name":"Krabby","type":"Water"},{"dex":99,"name":"Kingler","type":"Water"},{"dex":100,"name":"Voltorb","type":"Electric"},{"dex":101,"name":"Electrode","type":"Electric"},{"dex":102,"name":"Exeggcute","type":"Grass"},{"dex":103,"name":"Exeggutor","type":"Grass"},{"dex":104,"name":"Cubone","type":"Ground"},{"dex":105,"name":"Marowak","type":"Ground"},{"dex":106,"name":"Hitmonlee","type":"Fighting"},{"dex":107,"name":"Hitmonchan","type":"Fighting"},{"dex":108,"name":"Lickitung","type":"Normal"},{"dex":109,"name":"Koffing","type":"Poison"},{"dex":110,"name":"Weezing","type":"Poison"},{"dex":111,"name":"Rhyhorn","type":"Ground"},{"dex":112,"name":"Rhydon","type":"Ground"},{"dex":113,"name":"Chansey","type":"Normal"},{"dex":114,"name":"Tangela","type":"Grass"},{"dex":115,"name":"Kangaskhan","type":"Normal"},{"dex":116,"name":"Horsea","type":"Water"},{"dex":117,"name":"Seadra","type":"Water"},{"dex":118,"name":"Goldeen","type":"Water"},{"dex":119,"name":"Seaking","type":"Water"},{"dex":120,"name":"Staryu","type":"Water"},{"dex":121,"name":"Starmie","type":"Water"},{"dex":122,"name":"Mr. Mime","type":"Psychic"},{"dex":123,"name":"Scyther","type":"Bug"},{"dex":124,"name":"Jynx","type":"Ice"},{"dex":125,"name":"Electabuzz","type":"Electric"},{"dex":126,"name":"Magmar","type":"Fire"},{"dex":127,"name":"Pinsir","type":"Bug"},{"dex":128,"name":"Tauros","type":"Normal"},{"dex":129,"name":"Magikarp","type":"Water"},{"dex":130,"name":"Gyarados","type":"Water"},{"dex":131,"name":"Lapras","type":"Water"},{"dex":132,"name":"Ditto","type":"Normal"},{"dex":133,"name":"Eevee","type":"Normal"},{"dex":134,"name":"Vaporeon","type":"Water"},{"dex":135,"name":"Jolteon","type":"Electric"},{"dex":136,"name":"Flareon","type":"Fire"},{"dex":137,"name":"Porygon","type":"Normal"},{"dex":138,"name":"Omanyte","type":"Rock"},{"dex":139,"name":"Omastar","type":"Rock"},{"dex":140,"name":"Kabuto","type":"Rock"},{"dex":141,"name":"Kabutops","type":"Rock"},{"dex":142,"name":"Aerodactyl","type":"Rock"},{"dex":143,"name":"Snorlax","type":"Normal"},{"dex":144,"name":"Articuno","type":"Ice"},{"dex":145,"name":"Zapdos","type":"Electric"},{"dex":146,"name":"Moltres","type":"Fire"},{"dex":147,"name":"Dratini","type":"Dragon"},{"dex":148,"name":"Dragonair","type":"Dragon"},{"dex":149,"name":"Dragonite","type":"Dragon"},{"dex":150,"name":"Mewtwo","type":"Psychic"}];
+const GYMS=[
+ {city:"PEWTER",leader:"BROCK",specialty:"ROCK",name:"BOULDER BADGE",icon:"◆",goal:25,route:"ROUTE 1",ace:14,team:[{dex:74,level:12,attackType:"Rock"},{dex:95,level:14,attackType:"Rock"}]},
+ {city:"CERULEAN",leader:"MISTY",specialty:"WATER",name:"CASCADE BADGE",icon:"≈",goal:50,route:"MT. MOON",ace:21,team:[{dex:120,level:18,attackType:"Water"},{dex:121,level:21,attackType:"Water"}]},
+ {city:"VERMILION",leader:"LT. SURGE",specialty:"ELECTRIC",name:"THUNDER BADGE",icon:"ϟ",goal:50,route:"ROUTE 11",ace:24,team:[{dex:100,level:21,attackType:"Electric"},{dex:25,level:18,attackType:"Electric"},{dex:26,level:24,attackType:"Electric"}]},
+ {city:"CELADON",leader:"ERIKA",specialty:"GRASS",name:"RAINBOW BADGE",icon:"✿",goal:50,route:"POKéMON TOWER",ace:29,team:[{dex:71,level:29,attackType:"Grass"},{dex:114,level:24,attackType:"Grass"},{dex:45,level:29,attackType:"Grass"}]},
+ {city:"FUCHSIA",leader:"KOGA",specialty:"POISON",name:"SOUL BADGE",icon:"◈",goal:50,route:"SAFARI ZONE",ace:43,team:[{dex:109,level:37,attackType:"Poison"},{dex:109,level:37,attackType:"Poison"},{dex:89,level:39,attackType:"Poison"},{dex:110,level:43,attackType:"Poison"}]},
+ {city:"SAFFRON",leader:"SABRINA",specialty:"PSYCHIC",name:"MARSH BADGE",icon:"◎",goal:50,route:"SEAFOAM ISLANDS",ace:43,team:[{dex:64,level:38,attackType:"Psychic"},{dex:122,level:37,attackType:"Psychic"},{dex:49,level:38,attackType:"Bug"},{dex:65,level:43,attackType:"Psychic"}]},
+ {city:"CINNABAR",leader:"BLAINE",specialty:"FIRE",name:"VOLCANO BADGE",icon:"▲",goal:50,route:"VICTORY ROAD",ace:47,team:[{dex:58,level:42,attackType:"Fire"},{dex:77,level:40,attackType:"Fire"},{dex:78,level:42,attackType:"Fire"},{dex:59,level:47,attackType:"Fire"}]},
+ {city:"VIRIDIAN",leader:"GIOVANNI",specialty:"GROUND",name:"EARTH BADGE",icon:"⬟",goal:50,route:"CERULEAN CAVE",ace:50,team:[{dex:111,level:45,attackType:"Ground"},{dex:51,level:42,attackType:"Ground"},{dex:31,level:44,attackType:"Ground",defenseType:"Ground"},{dex:34,level:45,attackType:"Ground",defenseType:"Ground"},{dex:111,level:50,attackType:"Ground"}]}
+];
+const FAN_SPRITE_URL="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b470114b-ddc1-4340-b7bd-e25bd2fa461d/dkiun2o-c39fd84a-829b-4015-b5cf-f7d099a5a3cc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDQ4IiwicGF0aCI6Ii9mL2I0NzAxMTRiLWRkYzEtNDM0MC1iN2JkLWUyNWJkMmZhNDYxZC9ka2l1bjJvLWMzOWZkODRhLTgyOWItNDAxNS1iNWNmLWY3ZDA5OWE1YTNjYy5wbmciLCJ3aWR0aCI6Ijw9MTc5MiJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.X38JNO1q39eWgcS8klO-zwueHUZZU9FTgFCNfS1j0TI";
+const FAN_GYM_LEADER_URL="https://pbs.twimg.com/media/DWKFCMJXcAMEcjh.jpg";
+const USER_SPRITE_CROPS_KEY="tetrisCatchKanto150_userSpriteCrops_v1";
+const USER_LEADER_CROPS_KEY="tetrisCatchKanto150_userLeaderCrops_v1";
+const REF_POKE_W=1792, REF_POKE_H=448;
+const DEFAULT_POKEMON_CROPS={
+  "1": {
+    "x": 8,
+    "y": 19,
+    "w": 41,
+    "h": 38
+  },
+  "2": {
+    "x": 53,
+    "y": 9,
+    "w": 58,
+    "h": 50
+  },
+  "3": {
+    "x": 107,
+    "y": 0,
+    "w": 66,
+    "h": 59
+  },
+  "4": {
+    "x": 175,
+    "y": 15,
+    "w": 44,
+    "h": 42
+  },
+  "5": {
+    "x": 224,
+    "y": 12,
+    "w": 53,
+    "h": 51
+  },
+  "6": {
+    "x": 271,
+    "y": 2,
+    "w": 70,
+    "h": 54
+  },
+  "7": {
+    "x": 347,
+    "y": 13,
+    "w": 37,
+    "h": 43
+  },
+  "8": {
+    "x": 395,
+    "y": 9,
+    "w": 51,
+    "h": 48
+  },
+  "9": {
+    "x": 445,
+    "y": 0,
+    "w": 61,
+    "h": 58
+  },
+  "10": {
+    "x": 508,
+    "y": 13,
+    "w": 48,
+    "h": 42
+  },
+  "11": {
+    "x": 565,
+    "y": 8,
+    "w": 48,
+    "h": 55
+  },
+  "12": {
+    "x": 608,
+    "y": 0,
+    "w": 64,
+    "h": 54
+  },
+  "13": {
+    "x": 675,
+    "y": 14,
+    "w": 50,
+    "h": 46
+  },
+  "14": {
+    "x": 731,
+    "y": 7,
+    "w": 48,
+    "h": 51
+  },
+  "15": {
+    "x": 780,
+    "y": 1,
+    "w": 65,
+    "h": 61
+  },
+  "16": {
+    "x": 845,
+    "y": 9,
+    "w": 47,
+    "h": 52
+  },
+  "17": {
+    "x": 895,
+    "y": 2,
+    "w": 56,
+    "h": 56
+  },
+  "18": {
+    "x": 950,
+    "y": 0,
+    "w": 59,
+    "h": 60
+  },
+  "19": {
+    "x": 1011,
+    "y": 13,
+    "w": 49,
+    "h": 41
+  },
+  "20": {
+    "x": 1063,
+    "y": 1,
+    "w": 62,
+    "h": 62
+  },
+  "21": {
+    "x": 1128,
+    "y": 10,
+    "w": 47,
+    "h": 47
+  },
+  "22": {
+    "x": 1171,
+    "y": 0,
+    "w": 62,
+    "h": 59
+  },
+  "23": {
+    "x": 1238,
+    "y": 13,
+    "w": 46,
+    "h": 41
+  },
+  "24": {
+    "x": 1283,
+    "y": 0,
+    "w": 64,
+    "h": 60
+  },
+  "25": {
+    "x": 1346,
+    "y": 6,
+    "w": 49,
+    "h": 51
+  },
+  "26": {
+    "x": 1397,
+    "y": 3,
+    "w": 60,
+    "h": 51
+  },
+  "27": {
+    "x": 1465,
+    "y": 12,
+    "w": 39,
+    "h": 44
+  },
+  "28": {
+    "x": 1508,
+    "y": 0,
+    "w": 64,
+    "h": 60
+  },
+  "29": {
+    "x": 1567,
+    "y": 8,
+    "w": 57,
+    "h": 52
+  },
+  "30": {
+    "x": 1619,
+    "y": 5,
+    "w": 62,
+    "h": 52
+  },
+  "31": {
+    "x": 1681,
+    "y": 0,
+    "w": 56,
+    "h": 55
+  },
+  "32": {
+    "x": 1743,
+    "y": 12,
+    "w": 45,
+    "h": 44
+  },
+  "33": {
+    "x": 3,
+    "y": 55,
+    "w": 51,
+    "h": 55
+  },
+  "34": {
+    "x": 53,
+    "y": 56,
+    "w": 61,
+    "h": 56
+  },
+  "35": {
+    "x": 119,
+    "y": 71,
+    "w": 42,
+    "h": 41
+  },
+  "36": {
+    "x": 163,
+    "y": 56,
+    "w": 68,
+    "h": 55
+  },
+  "37": {
+    "x": 229,
+    "y": 65,
+    "w": 45,
+    "h": 48
+  },
+  "38": {
+    "x": 277,
+    "y": 56,
+    "w": 61,
+    "h": 56
+  },
+  "39": {
+    "x": 336,
+    "y": 55,
+    "w": 55,
+    "h": 55
+  },
+  "40": {
+    "x": 390,
+    "y": 56,
+    "w": 57,
+    "h": 55
+  },
+  "41": {
+    "x": 452,
+    "y": 59,
+    "w": 46,
+    "h": 49
+  },
+  "42": {
+    "x": 497,
+    "y": 57,
+    "w": 65,
+    "h": 55
+  },
+  "43": {
+    "x": 569,
+    "y": 69,
+    "w": 42,
+    "h": 44
+  },
+  "44": {
+    "x": 619,
+    "y": 69,
+    "w": 51,
+    "h": 43
+  },
+  "45": {
+    "x": 671,
+    "y": 59,
+    "w": 55,
+    "h": 53
+  },
+  "46": {
+    "x": 732,
+    "y": 66,
+    "w": 47,
+    "h": 45
+  },
+  "47": {
+    "x": 786,
+    "y": 66,
+    "w": 56,
+    "h": 48
+  },
+  "48": {
+    "x": 847,
+    "y": 68,
+    "w": 43,
+    "h": 46
+  },
+  "49": {
+    "x": 891,
+    "y": 56,
+    "w": 64,
+    "h": 58
+  },
+  "50": {
+    "x": 956,
+    "y": 70,
+    "w": 43,
+    "h": 38
+  },
+  "51": {
+    "x": 1000,
+    "y": 60,
+    "w": 64,
+    "h": 49
+  },
+  "52": {
+    "x": 1068,
+    "y": 63,
+    "w": 51,
+    "h": 46
+  },
+  "53": {
+    "x": 1117,
+    "y": 59,
+    "w": 61,
+    "h": 53
+  },
+  "54": {
+    "x": 1182,
+    "y": 65,
+    "w": 41,
+    "h": 46
+  },
+  "55": {
+    "x": 1232,
+    "y": 58,
+    "w": 57,
+    "h": 53
+  },
+  "56": {
+    "x": 1290,
+    "y": 62,
+    "w": 56,
+    "h": 55
+  },
+  "57": {
+    "x": 1340,
+    "y": 57,
+    "w": 65,
+    "h": 55
+  },
+  "58": {
+    "x": 1404,
+    "y": 63,
+    "w": 47,
+    "h": 50
+  },
+  "59": {
+    "x": 1448,
+    "y": 53,
+    "w": 65,
+    "h": 61
+  },
+  "60": {
+    "x": 1518,
+    "y": 72,
+    "w": 44,
+    "h": 46
+  },
+  "61": {
+    "x": 1564,
+    "y": 60,
+    "w": 59,
+    "h": 51
+  },
+  "62": {
+    "x": 1625,
+    "y": 61,
+    "w": 56,
+    "h": 51
+  },
+  "63": {
+    "x": 1691,
+    "y": 69,
+    "w": 35,
+    "h": 43
+  },
+  "64": {
+    "x": 1730,
+    "y": 59,
+    "w": 62,
+    "h": 54
+  },
+  "65": {
+    "x": 3,
+    "y": 113,
+    "w": 50,
+    "h": 54
+  },
+  "66": {
+    "x": 56,
+    "y": 116,
+    "w": 55,
+    "h": 56
+  },
+  "67": {
+    "x": 105,
+    "y": 113,
+    "w": 62,
+    "h": 56
+  },
+  "68": {
+    "x": 167,
+    "y": 111,
+    "w": 59,
+    "h": 60
+  },
+  "69": {
+    "x": 232,
+    "y": 124,
+    "w": 42,
+    "h": 46
+  },
+  "70": {
+    "x": 275,
+    "y": 116,
+    "w": 62,
+    "h": 52
+  },
+  "71": {
+    "x": 335,
+    "y": 118,
+    "w": 57,
+    "h": 50
+  },
+  "72": {
+    "x": 394,
+    "y": 116,
+    "w": 54,
+    "h": 47
+  },
+  "73": {
+    "x": 446,
+    "y": 113,
+    "w": 59,
+    "h": 53
+  },
+  "74": {
+    "x": 504,
+    "y": 118,
+    "w": 56,
+    "h": 42
+  },
+  "75": {
+    "x": 561,
+    "y": 116,
+    "w": 56,
+    "h": 51
+  },
+  "76": {
+    "x": 615,
+    "y": 111,
+    "w": 59,
+    "h": 58
+  },
+  "77": {
+    "x": 676,
+    "y": 115,
+    "w": 50,
+    "h": 54
+  },
+  "78": {
+    "x": 724,
+    "y": 112,
+    "w": 62,
+    "h": 58
+  },
+  "79": {
+    "x": 785,
+    "y": 124,
+    "w": 54,
+    "h": 48
+  },
+  "80": {
+    "x": 839,
+    "y": 111,
+    "w": 56,
+    "h": 56
+  },
+  "81": {
+    "x": 897,
+    "y": 109,
+    "w": 49,
+    "h": 48
+  },
+  "82": {
+    "x": 943,
+    "y": 107,
+    "w": 70,
+    "h": 59
+  },
+  "83": {
+    "x": 1009,
+    "y": 114,
+    "w": 53,
+    "h": 52
+  },
+  "84": {
+    "x": 1060,
+    "y": 115,
+    "w": 58,
+    "h": 58
+  },
+  "85": {
+    "x": 1117,
+    "y": 114,
+    "w": 62,
+    "h": 53
+  },
+  "86": {
+    "x": 1178,
+    "y": 117,
+    "w": 51,
+    "h": 53
+  },
+  "87": {
+    "x": 1229,
+    "y": 111,
+    "w": 63,
+    "h": 55
+  },
+  "88": {
+    "x": 1292,
+    "y": 128,
+    "w": 49,
+    "h": 47
+  },
+  "89": {
+    "x": 1338,
+    "y": 121,
+    "w": 69,
+    "h": 50
+  },
+  "90": {
+    "x": 1401,
+    "y": 122,
+    "w": 54,
+    "h": 49
+  },
+  "91": {
+    "x": 1455,
+    "y": 119,
+    "w": 61,
+    "h": 48
+  },
+  "92": {
+    "x": 1518,
+    "y": 117,
+    "w": 43,
+    "h": 48
+  },
+  "93": {
+    "x": 1564,
+    "y": 111,
+    "w": 66,
+    "h": 57
+  },
+  "94": {
+    "x": 1624,
+    "y": 112,
+    "w": 56,
+    "h": 58
+  },
+  "95": {
+    "x": 1678,
+    "y": 112,
+    "w": 58,
+    "h": 55
+  },
+  "96": {
+    "x": 1741,
+    "y": 119,
+    "w": 43,
+    "h": 50
+  },
+  "97": {
+    "x": 0,
+    "y": 169,
+    "w": 57,
+    "h": 53
+  },
+  "98": {
+    "x": 57,
+    "y": 176,
+    "w": 53,
+    "h": 48
+  },
+  "99": {
+    "x": 112,
+    "y": 171,
+    "w": 60,
+    "h": 52
+  },
+  "100": {
+    "x": 175,
+    "y": 179,
+    "w": 44,
+    "h": 40
+  },
+  "101": {
+    "x": 225,
+    "y": 170,
+    "w": 55,
+    "h": 53
+  },
+  "102": {
+    "x": 278,
+    "y": 169,
+    "w": 57,
+    "h": 55
+  },
+  "103": {
+    "x": 336,
+    "y": 169,
+    "w": 63,
+    "h": 56
+  },
+  "104": {
+    "x": 394,
+    "y": 184,
+    "w": 49,
+    "h": 38
+  },
+  "105": {
+    "x": 446,
+    "y": 172,
+    "w": 55,
+    "h": 52
+  },
+  "106": {
+    "x": 506,
+    "y": 163,
+    "w": 57,
+    "h": 62
+  },
+  "107": {
+    "x": 562,
+    "y": 167,
+    "w": 51,
+    "h": 59
+  },
+  "108": {
+    "x": 613,
+    "y": 172,
+    "w": 66,
+    "h": 56
+  },
+  "109": {
+    "x": 677,
+    "y": 172,
+    "w": 51,
+    "h": 52
+  },
+  "110": {
+    "x": 725,
+    "y": 170,
+    "w": 61,
+    "h": 51
+  },
+  "111": {
+    "x": 788,
+    "y": 176,
+    "w": 51,
+    "h": 48
+  },
+  "112": {
+    "x": 839,
+    "y": 174,
+    "w": 56,
+    "h": 49
+  },
+  "113": {
+    "x": 895,
+    "y": 173,
+    "w": 60,
+    "h": 52
+  },
+  "114": {
+    "x": 961,
+    "y": 180,
+    "w": 39,
+    "h": 46
+  },
+  "115": {
+    "x": 1000,
+    "y": 167,
+    "w": 66,
+    "h": 56
+  },
+  "116": {
+    "x": 1073,
+    "y": 179,
+    "w": 38,
+    "h": 42
+  },
+  "117": {
+    "x": 1113,
+    "y": 171,
+    "w": 67,
+    "h": 47
+  },
+  "118": {
+    "x": 1178,
+    "y": 172,
+    "w": 53,
+    "h": 51
+  },
+  "119": {
+    "x": 1228,
+    "y": 166,
+    "w": 63,
+    "h": 60
+  },
+  "120": {
+    "x": 1293,
+    "y": 174,
+    "w": 45,
+    "h": 47
+  },
+  "121": {
+    "x": 1338,
+    "y": 171,
+    "w": 64,
+    "h": 57
+  },
+  "122": {
+    "x": 1399,
+    "y": 169,
+    "w": 59,
+    "h": 56
+  },
+  "123": {
+    "x": 1457,
+    "y": 167,
+    "w": 55,
+    "h": 59
+  },
+  "124": {
+    "x": 1512,
+    "y": 166,
+    "w": 57,
+    "h": 61
+  },
+  "125": {
+    "x": 1567,
+    "y": 164,
+    "w": 58,
+    "h": 61
+  },
+  "126": {
+    "x": 1626,
+    "y": 170,
+    "w": 56,
+    "h": 57
+  },
+  "127": {
+    "x": 1679,
+    "y": 169,
+    "w": 58,
+    "h": 59
+  },
+  "128": {
+    "x": 1736,
+    "y": 169,
+    "w": 55,
+    "h": 54
+  },
+  "129": {
+    "x": 6,
+    "y": 232,
+    "w": 46,
+    "h": 45
+  },
+  "130": {
+    "x": 51,
+    "y": 223,
+    "w": 59,
+    "h": 58
+  },
+  "131": {
+    "x": 113,
+    "y": 227,
+    "w": 58,
+    "h": 53
+  },
+  "132": {
+    "x": 173,
+    "y": 235,
+    "w": 44,
+    "h": 49
+  },
+  "133": {
+    "x": 224,
+    "y": 226,
+    "w": 53,
+    "h": 54
+  },
+  "134": {
+    "x": 272,
+    "y": 223,
+    "w": 62,
+    "h": 55
+  },
+  "135": {
+    "x": 336,
+    "y": 224,
+    "w": 55,
+    "h": 56
+  },
+  "136": {
+    "x": 390,
+    "y": 223,
+    "w": 57,
+    "h": 57
+  },
+  "137": {
+    "x": 447,
+    "y": 224,
+    "w": 59,
+    "h": 57
+  },
+  "138": {
+    "x": 513,
+    "y": 242,
+    "w": 39,
+    "h": 37
+  },
+  "139": {
+    "x": 552,
+    "y": 229,
+    "w": 68,
+    "h": 51
+  },
+  "140": {
+    "x": 628,
+    "y": 244,
+    "w": 30,
+    "h": 28
+  },
+  "141": {
+    "x": 670,
+    "y": 229,
+    "w": 57,
+    "h": 54
+  },
+  "142": {
+    "x": 727,
+    "y": 223,
+    "w": 57,
+    "h": 62
+  },
+  "143": {
+    "x": 785,
+    "y": 223,
+    "w": 56,
+    "h": 63
+  },
+  "144": {
+    "x": 839,
+    "y": 222,
+    "w": 57,
+    "h": 60
+  },
+  "145": {
+    "x": 894,
+    "y": 226,
+    "w": 57,
+    "h": 52
+  },
+  "146": {
+    "x": 954,
+    "y": 230,
+    "w": 57,
+    "h": 51
+  },
+  "147": {
+    "x": 1012,
+    "y": 234,
+    "w": 48,
+    "h": 51
+  },
+  "148": {
+    "x": 1063,
+    "y": 227,
+    "w": 54,
+    "h": 56
+  },
+  "149": {
+    "x": 1118,
+    "y": 220,
+    "w": 61,
+    "h": 64
+  },
+  "150": {
+    "x": 1178,
+    "y": 223,
+    "w": 59,
+    "h": 60
+  }
+};
+const DEFAULT_LEADER_CROPS={
+  "0": {
+    "x": 107,
+    "y": 39,
+    "w": 201,
+    "h": 468,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "1": {
+    "x": 321,
+    "y": 44,
+    "w": 195,
+    "h": 488,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "2": {
+    "x": 499,
+    "y": 101,
+    "w": 297,
+    "h": 407,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "3": {
+    "x": 787,
+    "y": 41,
+    "w": 261,
+    "h": 421,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "4": {
+    "x": 25,
+    "y": 505,
+    "w": 235,
+    "h": 369,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "5": {
+    "x": 315,
+    "y": 526,
+    "w": 270,
+    "h": 431,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "6": {
+    "x": 589,
+    "y": 509,
+    "w": 164,
+    "h": 519,
+    "refW": 1069,
+    "refH": 1200
+  },
+  "7": {
+    "x": 786,
+    "y": 488,
+    "w": 170,
+    "h": 184,
+    "refW": 1069,
+    "refH": 1200
+  }
+};
+const $=id=>document.getElementById(id);
+let mode="pokemon", subject=1, zoom=1, draft=null, dragStart=null;
+let userSpriteCrops=load(USER_SPRITE_CROPS_KEY), userLeaderCrops=load(USER_LEADER_CROPS_KEY);
+function load(key){try{const v=JSON.parse(localStorage.getItem(key)||"{}");return v&&typeof v==="object"?v:{}}catch{return {}}}
+function store(key,data){try{localStorage.setItem(key,JSON.stringify(data||{}))}catch(err){status("Could not save locally; export JSON instead.")}}
+function subjects(){return mode==="pokemon"?MONS.map(m=>({id:m.dex,label:`#${String(m.dex).padStart(3,"0")} ${m.name.toUpperCase()}`,type:m.type})):GYMS.map((g,i)=>({id:i,label:`${g.city} • ${g.leader}`,type:g.specialty}));}
+function current(){return subjects().find(s=>String(s.id)===String(subject))||subjects()[0];}
+function refSize(){if(mode==="pokemon")return {w:REF_POKE_W,h:REF_POKE_H};const img=$("sheetImg");return {w:img.naturalWidth||1200,h:img.naturalHeight||600};}
+function defaultCrop(id){if(mode==="pokemon"){const n=Number(id)-1;return {x:(n%28)*64,y:Math.floor(n/28)*64,w:64,h:64};}const ref=refSize();const cols=4,rows=2;return {x:Math.floor((id%cols)*(ref.w/cols)),y:Math.floor(Math.floor(id/cols)*(ref.h/rows)),w:Math.floor(ref.w/cols),h:Math.floor(ref.h/rows),refW:ref.w,refH:ref.h};}
+function savedCrop(id){const key=String(id);return mode==="pokemon"?(userSpriteCrops[key]||DEFAULT_POKEMON_CROPS[key]||defaultCrop(id)):(userLeaderCrops[key]||DEFAULT_LEADER_CROPS[key]||defaultCrop(id));}
+function clamp(v,min,max){return Math.max(min,Math.min(max,Math.round(Number(v)||0)));}
+function status(msg){$("status").textContent=msg;}
+function setImage(){const img=$("sheetImg");status("Loading sheet…");img.onload=()=>{applyZoom();draft=null;refresh(true);status(mode==="pokemon"?"Pokémon full sheet loaded":"Gym Leader full sheet loaded");};img.onerror=()=>status("Image failed to load. Check internet access or open the game build online.");img.src=mode==="pokemon"?FAN_SPRITE_URL:FAN_GYM_LEADER_URL;applyZoom();}
+function applyZoom(){const img=$("sheetImg"),ref=refSize();img.style.width=(ref.w*zoom)+"px";img.style.height=(ref.h*zoom)+"px";}
+function populate(){const sel=$("subject"),list=subjects();sel.innerHTML=list.map(s=>`<option value="${s.id}">${s.label} — ${s.type}</option>`).join("");if(!list.some(s=>String(s.id)===String(subject)))subject=list[0].id;sel.value=String(subject);}
+function refresh(loadDefault=false){const sub=current();if(!sub)return;applyZoom();const ref=refSize();if(loadDefault||!draft)draft={...savedCrop(sub.id)};if(mode==="leaders"){draft.refW=ref.w;draft.refH=ref.h;}draft.x=clamp(draft.x,0,Math.max(0,ref.w-1));draft.y=clamp(draft.y,0,Math.max(0,ref.h-1));draft.w=clamp(draft.w,1,Math.max(1,ref.w-draft.x));draft.h=clamp(draft.h,1,Math.max(1,ref.h-draft.y));[["cropX",draft.x],["cropY",draft.y],["cropW",draft.w],["cropH",draft.h]].forEach(([id,v])=>$(id).value=v);$("readout").innerHTML=`<b>${mode==="pokemon"?"POKéMON":"GYM LEADER"}</b>: ${sub.label} <span class="leader-badge">${sub.type}</span>`;positionBox();drawPreview();}
+function positionBox(){const box=$("cropBox"),img=$("sheetImg"),ref=refSize();const sx=(img.clientWidth||ref.w)/ref.w,sy=(img.clientHeight||ref.h)/ref.h;box.style.left=(draft.x*sx)+"px";box.style.top=(draft.y*sy)+"px";box.style.width=(draft.w*sx)+"px";box.style.height=(draft.h*sy)+"px";}
+function drawPreview(){const canvas=$("preview"),ctx=canvas.getContext("2d"),img=$("sheetImg");ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle="#c9e8ae";ctx.fillRect(0,0,canvas.width,canvas.height);if(!img.complete||!draft)return;try{const ref=refSize(),sxScale=(img.naturalWidth||ref.w)/ref.w,syScale=(img.naturalHeight||ref.h)/ref.h;const sx=draft.x*sxScale,sy=draft.y*syScale,sw=draft.w*sxScale,sh=draft.h*syScale;const scale=Math.min(canvas.width/sw,canvas.height/sh)*0.86;const dw=sw*scale,dh=sh*scale,dx=(canvas.width-dw)/2,dy=(canvas.height-dh)/2;ctx.imageSmoothingEnabled=false;ctx.drawImage(img,sx,sy,sw,sh,dx,dy,dw,dh);}catch(e){ctx.fillStyle="#071821";ctx.font="16px monospace";ctx.fillText("Preview unavailable",18,96);}}
+function pointerToRef(e){const img=$("sheetImg"),rect=img.getBoundingClientRect(),ref=refSize();return {x:clamp((e.clientX-rect.left)/Math.max(1,rect.width)*ref.w,0,ref.w),y:clamp((e.clientY-rect.top)/Math.max(1,rect.height)*ref.h,0,ref.h)};}
+function loadFields(){const ref=refSize();draft={x:clamp($("cropX").value,0,ref.w-1),y:clamp($("cropY").value,0,ref.h-1),w:clamp($("cropW").value,1,ref.w),h:clamp($("cropH").value,1,ref.h)};refresh(false);}
+function saveCrop(){const sub=current();const ref=refSize();const clean={x:draft.x,y:draft.y,w:draft.w,h:draft.h};if(mode==="pokemon"){userSpriteCrops[String(sub.id)]=clean;store(USER_SPRITE_CROPS_KEY,userSpriteCrops);}else{userLeaderCrops[String(sub.id)]={...clean,refW:ref.w,refH:ref.h};store(USER_LEADER_CROPS_KEY,userLeaderCrops);}status(`Saved ${sub.label}`);exportData();}
+function resetOne(){const sub=current();if(mode==="pokemon"){delete userSpriteCrops[String(sub.id)];store(USER_SPRITE_CROPS_KEY,userSpriteCrops);}else{delete userLeaderCrops[String(sub.id)];store(USER_LEADER_CROPS_KEY,userLeaderCrops);}draft=null;refresh(true);status(`Reset ${sub.label}`);exportData();}
+function exportData(){
+ const data={pokemon:userSpriteCrops,gymLeaders:userLeaderCrops};
+ const json=JSON.stringify(data,null,2);
+ const box=$("exportBox");
+ box.value=json;box.focus();box.select();
+ status(`EXPORT READY — ${Object.keys(userSpriteCrops).length} POKéMON + ${Object.keys(userLeaderCrops).length} GYM LEADERS`);
+ try{
+   const blob=new Blob([json],{type:"application/json"});
+   const url=URL.createObjectURL(blob);
+   const a=document.createElement("a");
+   a.href=url;a.download="tetris-catch-manual-crops.json";
+   document.body.appendChild(a);a.click();a.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),1200);
+ }catch(err){status("Export shown in text box. Browser blocked download, so copy the selected JSON.")}
+ try{navigator.clipboard?.writeText(json).then(()=>status("EXPORT READY — COPIED TO CLIPBOARD")).catch(()=>{})}catch(err){}
+}
+function importData(){try{const data=JSON.parse($("exportBox").value);if(data.pokemon&&typeof data.pokemon==="object")userSpriteCrops=data.pokemon;if(data.gymLeaders&&typeof data.gymLeaders==="object")userLeaderCrops=data.gymLeaders;store(USER_SPRITE_CROPS_KEY,userSpriteCrops);store(USER_LEADER_CROPS_KEY,userLeaderCrops);draft=null;refresh(true);status("Imported crop data");}catch(e){status("Import failed: invalid JSON");}}
+function step(d){const list=subjects();let i=list.findIndex(s=>String(s.id)===String(subject));i=(i+d+list.length)%list.length;subject=list[i].id;$("subject").value=String(subject);draft=null;refresh(true);}
+function switchMode(m){mode=m;subject=m==="pokemon"?1:0;zoom=1;$("modePokemon").classList.toggle("active",m==="pokemon");$("modeLeaders").classList.toggle("active",m==="leaders");$("sheetNote").textContent=m==="pokemon"?"Pokémon mode: full uncropped 1792×448 Kanto sheet. Drag from top-left to bottom-right around the selected sprite.":"Gym Leader mode: full uncropped leader sheet. Drag around the selected leader portrait.";populate();setImage();}
+$("modePokemon").addEventListener("click",()=>switchMode("pokemon"));$("modeLeaders").addEventListener("click",()=>switchMode("leaders"));$("subject").addEventListener("change",e=>{subject=e.target.value;draft=null;refresh(true);});$("prev").addEventListener("click",()=>step(-1));$("next").addEventListener("click",()=>step(1));$("zoomIn").addEventListener("click",()=>{zoom=Math.min(4,zoom+.25);applyZoom();positionBox();});$("zoomOut").addEventListener("click",()=>{zoom=Math.max(.35,zoom-.25);applyZoom();positionBox();});["cropX","cropY","cropW","cropH"].forEach(id=>$(id).addEventListener("change",loadFields));$("save").addEventListener("click",saveCrop);$("resetOne").addEventListener("click",resetOne);$("exportBtn").addEventListener("click",exportData);$("importBtn").addEventListener("click",importData);
+const wrap=$("sheetWrap");wrap.addEventListener("pointerdown",e=>{if(e.target.id!=="sheetImg"&&e.target.id!=="stage")return;dragStart=pointerToRef(e);draft={x:dragStart.x,y:dragStart.y,w:1,h:1};wrap.setPointerCapture?.(e.pointerId);refresh(false);e.preventDefault();});wrap.addEventListener("pointermove",e=>{if(!dragStart)return;const p=pointerToRef(e);draft={x:Math.min(dragStart.x,p.x),y:Math.min(dragStart.y,p.y),w:Math.abs(p.x-dragStart.x),h:Math.abs(p.y-dragStart.y)};refresh(false);e.preventDefault();});wrap.addEventListener("pointerup",e=>{if(dragStart){dragStart=null;refresh(false);status("Crop box drawn — click SAVE CROP");}wrap.releasePointerCapture?.(e.pointerId);});
+populate();setImage();exportData();
+})();
+</script>
+</body>
+</html>
