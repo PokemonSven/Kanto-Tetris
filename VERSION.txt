@@ -1,0 +1,3 @@
+Kanto Tetris Stable Build 1.1 — GitHub Ready
+One-file index.html release candidate.
+Base: Kanto_Tetris_Stable_Build_1_1.zip
