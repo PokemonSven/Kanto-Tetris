@@ -14,10 +14,19 @@ html,body{margin:0;min-height:100%;background:#202936;color:#fff;font-family:mon
 <script>
 (async()=>{
   try{
-    const response=await fetch("game-base.html",{cache:"no-cache"});
-    if(!response.ok) throw new Error("HTTP "+response.status);
-    let html=await response.text();
-    html=html.replace("</body>",'<script src="classical_music.js"></'+'script><script>(()=>{const b=document.getElementById("trackBtn");if(b){const n=b.cloneNode(true);b.replaceWith(n);n.addEventListener("click",cycleMusicTrack)}})();</'+'script></body>');
+    const stamp="20260906-scopefix1";
+    const [gameResponse,musicResponse]=await Promise.all([
+      fetch(`game-base.html?v=${stamp}`,{cache:"no-store"}),
+      fetch(`classical_music.js?v=${stamp}`,{cache:"no-store"})
+    ]);
+    if(!gameResponse.ok) throw new Error("Game HTTP "+gameResponse.status);
+    if(!musicResponse.ok) throw new Error("Music HTTP "+musicResponse.status);
+    let html=await gameResponse.text();
+    const music=await musicResponse.text();
+    const needle="initCropEditorEvents();renderDex();renderBadges();renderTeam();renderControlPanels();renderSaveControls();restartRun();";
+    if(!html.includes(needle)) throw new Error("Could not locate Kanto Tetris startup hook");
+    html=html.replace("TRACK: 1/19 ▶","TRACK: 1/10 ▶");
+    html=html.replace(needle,music+"\n\n"+needle);
     document.open();
     document.write(html);
     document.close();
