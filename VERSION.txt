@@ -1,3 +1,8 @@
-Kanto Tetris Stable Build 1.1 — GitHub Ready
-One-file index.html release candidate.
-Base: Kanto_Tetris_Stable_Build_1_1.zip
+Kanto Tetris 1.1 Nightly
+Patch: Team EXP Share + Active 50% Bonus
+Includes: Gym City Return Fix
+Build date: 2026-09-07
+Source: Kanto_Tetris_1_1_Nightly_Gym_City_Fix.zip
+Active: 150% of previous EXP. Each reserve: 100%. Bill's PC: none.
+All modes; per-Pokemon level caps and existing item multipliers preserved.
+Clean GitHub-ready package: index.html, README.md, VERSION.txt.
