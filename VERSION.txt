@@ -1,3 +1,6 @@
-Kanto Tetris Stable Build 1.1 — GitHub Ready
-One-file index.html release candidate.
-Base: Kanto_Tetris_Stable_Build_1_1.zip
+Kanto Tetris 1.1 Nightly
+Variant: Clickthrough Gym Victory Dialogue
+Base: Kanto Tetris 1.1 Nightly
+Change: Gym Leader badge handoff dialogue now waits for click or keypress before showing the badge notification.
+Contents: index.html, README.md, VERSION.txt
+Stable Build 1.1 remains untouched.

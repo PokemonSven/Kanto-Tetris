@@ -1,27 +1,50 @@
-# Kanto Tetris — Stable Build 1.1
+# Kanto Tetris 1.1 Nightly
 
 Unofficial fan-made browser prototype.
 
-## Play
+## Nightly status
 
-Open `index.html`, or use GitHub Pages if this repository is deployed.
+This Nightly build includes the latest approved dev changes plus a click-through Gym victory flow.
 
-## Stable Build 1.1 includes
+## Included
 
 - Rogue Run
 - Adventure Mode
-- Optional Gym training routes
-- GBA-style line-clear battle system
-- Team Share XP from Tetrises
-- Custom 10-item system
-- Custom item sprites
+- Boss Test menu
 - Custom Pokémon sprite set
-- Custom Gym Leader portrait set
+- Custom item sprites
+- Custom Gym Leader portraits
 - Sven Studios splash screen
 - Updated title hero screen
 - Prof. Oak guide screen
+- Reworked Gym Leader boss mechanics
+- Clean themed boss special popups
+- Gym Leader badge handoff dialogue
+- Fresh board after each Gym clear
 
-## Packaging note
+## Gym victory flow
 
-This GitHub-ready build is intentionally simple: the active game is contained in `index.html`.
-The custom Pokémon sprite atlas, item sprites, Gym Leader portraits, title hero art, and Sven Studios splash art are embedded directly in the file.
+After defeating a Gym Leader:
+1. The leader portrait and badge handoff dialogue appear.
+2. The game waits for **click or keypress** to continue.
+3. Then the badge unlocked notification appears.
+4. The next route begins on a fresh board.
+
+## Boss mechanics in this nightly
+
+- Brock: Stone Drop
+- Misty: Rising Tide
+- Lt. Surge: Board Shock + Paralysis
+- Erika: Creeping Vines
+- Koga: Poison Spikes
+- Sabrina: Psychic Spin
+- Blaine: taller Flame Column
+- Giovanni: Earthquake color break + item lockout
+
+## GitHub upload contents
+
+- `index.html`
+- `README.md`
+- `VERSION.txt`
+
+The full playable build is embedded directly in `index.html`.
