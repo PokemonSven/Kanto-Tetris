@@ -1,0 +1,1411 @@
+{
+  "width": 240,
+  "height": 190,
+  "cities": [
+    {
+      "name": "PALLET TOWN",
+      "x": 60,
+      "y": 133,
+      "gba": [
+        4,
+        11
+      ]
+    },
+    {
+      "name": "VIRIDIAN CITY",
+      "x": 60,
+      "y": 100,
+      "gba": [
+        4,
+        8
+      ]
+    },
+    {
+      "name": "PEWTER CITY",
+      "x": 60,
+      "y": 56,
+      "gba": [
+        4,
+        4
+      ]
+    },
+    {
+      "name": "CERULEAN CITY",
+      "x": 170,
+      "y": 45,
+      "gba": [
+        14,
+        3
+      ]
+    },
+    {
+      "name": "LAVENDER TOWN",
+      "x": 214,
+      "y": 78,
+      "gba": [
+        18,
+        6
+      ]
+    },
+    {
+      "name": "VERMILION CITY",
+      "x": 170,
+      "y": 111,
+      "gba": [
+        14,
+        9
+      ]
+    },
+    {
+      "name": "CELADON CITY",
+      "x": 137,
+      "y": 78,
+      "gba": [
+        11,
+        6
+      ]
+    },
+    {
+      "name": "FUCHSIA CITY",
+      "x": 148,
+      "y": 144,
+      "gba": [
+        12,
+        12
+      ]
+    },
+    {
+      "name": "CINNABAR ISLAND",
+      "x": 60,
+      "y": 166,
+      "gba": [
+        4,
+        14
+      ]
+    },
+    {
+      "name": "INDIGO PLATEAU",
+      "x": 38,
+      "y": 45,
+      "gba": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "SAFFRON CITY",
+      "x": 170,
+      "y": 78,
+      "gba": [
+        14,
+        6
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "route": "ROUTE 1",
+      "label": "R1",
+      "x": 60,
+      "y": 116.5,
+      "detail": "Pallet Town ↔ Viridian City"
+    },
+    {
+      "route": "ROUTE 2",
+      "label": "R2",
+      "x": 60,
+      "y": 91.2,
+      "detail": "Viridian City ↔ Pewter City, via Viridian Forest"
+    },
+    {
+      "route": "ROUTE 3",
+      "label": "R3",
+      "x": 82,
+      "y": 56,
+      "detail": "Pewter City ↔ Route 4 / Mt. Moon approach"
+    },
+    {
+      "route": "ROUTE 4",
+      "label": "R4",
+      "x": 142.5,
+      "y": 45,
+      "detail": "Mt. Moon ↔ Cerulean City"
+    },
+    {
+      "route": "ROUTE 5",
+      "label": "R5",
+      "x": 170,
+      "y": 62.599999999999994,
+      "detail": "Cerulean City ↔ Saffron City; Underground Path to Route 6"
+    },
+    {
+      "route": "ROUTE 6",
+      "label": "R6",
+      "x": 170,
+      "y": 95.6,
+      "detail": "Saffron City ↔ Vermilion City; Underground Path to Route 5"
+    },
+    {
+      "route": "ROUTE 7",
+      "label": "R7",
+      "x": 153.5,
+      "y": 78,
+      "detail": "Celadon City ↔ Saffron City; Underground Path to Route 8"
+    },
+    {
+      "route": "ROUTE 8",
+      "label": "R8",
+      "x": 194.2,
+      "y": 78,
+      "detail": "Saffron City ↔ Lavender Town; Underground Path to Route 7"
+    },
+    {
+      "route": "ROUTE 9",
+      "label": "R9",
+      "x": 192,
+      "y": 45,
+      "detail": "Cerulean City ↔ Route 10"
+    },
+    {
+      "route": "ROUTE 10",
+      "label": "R10",
+      "x": 214,
+      "y": 67,
+      "detail": "Route 9 ↔ Lavender Town, through Rock Tunnel; Surf branch to Power Plant"
+    },
+    {
+      "route": "ROUTE 11",
+      "label": "R11",
+      "x": 194.2,
+      "y": 111,
+      "detail": "Vermilion City ↔ Route 12; Diglett’s Cave entrance"
+    },
+    {
+      "route": "ROUTE 12",
+      "label": "R12",
+      "x": 214,
+      "y": 122,
+      "detail": "Lavender Town ↔ Route 13; junction with Route 11"
+    },
+    {
+      "route": "ROUTE 13",
+      "label": "R13",
+      "x": 200.8,
+      "y": 133,
+      "detail": "Route 12 ↔ Route 14"
+    },
+    {
+      "route": "ROUTE 14",
+      "label": "R14",
+      "x": 181,
+      "y": 138.5,
+      "detail": "Route 13 ↔ Route 15"
+    },
+    {
+      "route": "ROUTE 15",
+      "label": "R15",
+      "x": 165.6,
+      "y": 144,
+      "detail": "Route 14 ↔ Fuchsia City"
+    },
+    {
+      "route": "ROUTE 16",
+      "label": "R16",
+      "x": 115,
+      "y": 78,
+      "detail": "Celadon City ↔ Route 17"
+    },
+    {
+      "route": "ROUTE 17",
+      "label": "R17",
+      "x": 93,
+      "y": 113.19999999999999,
+      "detail": "Cycling Road: Route 16 ↔ Route 18"
+    },
+    {
+      "route": "ROUTE 18",
+      "label": "R18",
+      "x": 120.5,
+      "y": 144,
+      "detail": "Route 17 ↔ Fuchsia City"
+    },
+    {
+      "route": "ROUTE 19",
+      "label": "R19",
+      "x": 148,
+      "y": 156.1,
+      "detail": "Fuchsia City ↔ Route 20"
+    },
+    {
+      "route": "ROUTE 20",
+      "label": "R20",
+      "x": 87.5,
+      "y": 166,
+      "detail": "Route 19 ↔ Cinnabar Island, via Seafoam Islands"
+    },
+    {
+      "route": "ROUTE 21",
+      "label": "R21",
+      "x": 60,
+      "y": 150.6,
+      "detail": "Cinnabar Island ↔ Pallet Town"
+    },
+    {
+      "route": "ROUTE 22",
+      "label": "R22",
+      "x": 49,
+      "y": 100,
+      "detail": "Viridian City ↔ Pokémon League Reception Gate / Route 23"
+    },
+    {
+      "route": "ROUTE 23",
+      "label": "R23",
+      "x": 38,
+      "y": 85.7,
+      "detail": "League Reception Gate ↔ Indigo Plateau, via Victory Road"
+    },
+    {
+      "route": "ROUTE 24",
+      "label": "R24",
+      "x": 170,
+      "y": 34,
+      "detail": "Cerulean City ↔ Route 25, over Nugget Bridge"
+    },
+    {
+      "route": "ROUTE 25",
+      "label": "R25",
+      "x": 187.6,
+      "y": 23,
+      "detail": "Route 24 ↔ Bill’s Sea Cottage"
+    },
+    {
+      "route": "VIRIDIAN FOREST",
+      "x": 60,
+      "y": 79,
+      "label": "VIRIDIAN FOREST",
+      "detail": "Forest between the two sections of Route 2."
+    },
+    {
+      "route": "MT. MOON",
+      "x": 115,
+      "y": 45,
+      "label": "MT. MOON",
+      "detail": "Cave on Route 4, reached from Route 3."
+    },
+    {
+      "route": "DIGLETT'S CAVE",
+      "x": 182,
+      "y": 107,
+      "label": "DIGLETT'S CAVE",
+      "detail": "Underground connection between Route 11 and Route 2."
+    },
+    {
+      "route": "ROCK TUNNEL",
+      "x": 214,
+      "y": 49,
+      "label": "ROCK TUNNEL",
+      "detail": "Cave linking northern and southern Route 10."
+    },
+    {
+      "route": "POKéMON TOWER",
+      "x": 222,
+      "y": 76,
+      "label": "POKéMON TOWER",
+      "detail": "Tower in Lavender Town."
+    },
+    {
+      "route": "SAFARI ZONE",
+      "x": 148,
+      "y": 129,
+      "label": "SAFARI ZONE",
+      "detail": "Park entered from northern Fuchsia City."
+    },
+    {
+      "route": "POWER PLANT",
+      "x": 227,
+      "y": 61,
+      "label": "POWER PLANT",
+      "detail": "Reached by Surf from northern Route 10."
+    },
+    {
+      "route": "SEAFOAM ISLANDS",
+      "x": 104,
+      "y": 166,
+      "label": "SEAFOAM ISLANDS",
+      "detail": "Twin islands on sea Route 20."
+    },
+    {
+      "route": "VICTORY ROAD",
+      "x": 38,
+      "y": 57,
+      "label": "VICTORY ROAD",
+      "detail": "Cave on Route 23, south of Indigo Plateau."
+    },
+    {
+      "route": "CERULEAN CAVE",
+      "x": 155,
+      "y": 34,
+      "label": "CERULEAN CAVE",
+      "detail": "Cave northwest of Cerulean, reached by Surf."
+    },
+    {
+      "route": "INDIGO GATE",
+      "x": 38,
+      "y": 96,
+      "label": "INDIGO GATE",
+      "detail": "Kanto Tetris League destination, represented at the Route 22/23 gate."
+    }
+  ],
+  "segments": [
+    {
+      "number": 1,
+      "name": "ROUTE 1",
+      "type": "land",
+      "points": [
+        [
+          60,
+          133
+        ],
+        [
+          60,
+          100
+        ]
+      ]
+    },
+    {
+      "number": 2,
+      "name": "ROUTE 2",
+      "type": "land",
+      "points": [
+        [
+          60,
+          100
+        ],
+        [
+          60,
+          56
+        ]
+      ]
+    },
+    {
+      "number": 3,
+      "name": "ROUTE 3",
+      "type": "land",
+      "points": [
+        [
+          60,
+          56
+        ],
+        [
+          104,
+          56
+        ],
+        [
+          104,
+          45
+        ]
+      ]
+    },
+    {
+      "number": 4,
+      "name": "ROUTE 4",
+      "type": "land",
+      "points": [
+        [
+          104,
+          45
+        ],
+        [
+          170,
+          45
+        ]
+      ]
+    },
+    {
+      "number": 5,
+      "name": "ROUTE 5",
+      "type": "land",
+      "points": [
+        [
+          170,
+          45
+        ],
+        [
+          170,
+          78
+        ]
+      ]
+    },
+    {
+      "number": 6,
+      "name": "ROUTE 6",
+      "type": "land",
+      "points": [
+        [
+          170,
+          78
+        ],
+        [
+          170,
+          111
+        ]
+      ]
+    },
+    {
+      "number": 7,
+      "name": "ROUTE 7",
+      "type": "land",
+      "points": [
+        [
+          137,
+          78
+        ],
+        [
+          170,
+          78
+        ]
+      ]
+    },
+    {
+      "number": 8,
+      "name": "ROUTE 8",
+      "type": "land",
+      "points": [
+        [
+          170,
+          78
+        ],
+        [
+          214,
+          78
+        ]
+      ]
+    },
+    {
+      "number": 9,
+      "name": "ROUTE 9",
+      "type": "land",
+      "points": [
+        [
+          170,
+          45
+        ],
+        [
+          214,
+          45
+        ]
+      ]
+    },
+    {
+      "number": 10,
+      "name": "ROUTE 10",
+      "type": "land",
+      "points": [
+        [
+          214,
+          45
+        ],
+        [
+          214,
+          78
+        ]
+      ]
+    },
+    {
+      "number": 11,
+      "name": "ROUTE 11",
+      "type": "land",
+      "points": [
+        [
+          170,
+          111
+        ],
+        [
+          214,
+          111
+        ]
+      ]
+    },
+    {
+      "number": 12,
+      "name": "ROUTE 12",
+      "type": "land",
+      "points": [
+        [
+          214,
+          78
+        ],
+        [
+          214,
+          133
+        ]
+      ]
+    },
+    {
+      "number": 13,
+      "name": "ROUTE 13",
+      "type": "land",
+      "points": [
+        [
+          214,
+          133
+        ],
+        [
+          181,
+          133
+        ]
+      ]
+    },
+    {
+      "number": 14,
+      "name": "ROUTE 14",
+      "type": "land",
+      "points": [
+        [
+          181,
+          133
+        ],
+        [
+          181,
+          144
+        ]
+      ]
+    },
+    {
+      "number": 15,
+      "name": "ROUTE 15",
+      "type": "land",
+      "points": [
+        [
+          181,
+          144
+        ],
+        [
+          148,
+          144
+        ]
+      ]
+    },
+    {
+      "number": 16,
+      "name": "ROUTE 16",
+      "type": "land",
+      "points": [
+        [
+          137,
+          78
+        ],
+        [
+          93,
+          78
+        ]
+      ]
+    },
+    {
+      "number": 17,
+      "name": "ROUTE 17",
+      "type": "land",
+      "points": [
+        [
+          93,
+          78
+        ],
+        [
+          93,
+          144
+        ]
+      ]
+    },
+    {
+      "number": 18,
+      "name": "ROUTE 18",
+      "type": "land",
+      "points": [
+        [
+          93,
+          144
+        ],
+        [
+          148,
+          144
+        ]
+      ]
+    },
+    {
+      "number": 19,
+      "name": "ROUTE 19",
+      "type": "water",
+      "points": [
+        [
+          148,
+          144
+        ],
+        [
+          148,
+          166
+        ]
+      ]
+    },
+    {
+      "number": 20,
+      "name": "ROUTE 20",
+      "type": "water",
+      "points": [
+        [
+          148,
+          166
+        ],
+        [
+          60,
+          166
+        ]
+      ]
+    },
+    {
+      "number": 21,
+      "name": "ROUTE 21",
+      "type": "water",
+      "points": [
+        [
+          60,
+          166
+        ],
+        [
+          60,
+          133
+        ]
+      ]
+    },
+    {
+      "number": 22,
+      "name": "ROUTE 22",
+      "type": "land",
+      "points": [
+        [
+          60,
+          100
+        ],
+        [
+          38,
+          100
+        ]
+      ]
+    },
+    {
+      "number": 23,
+      "name": "ROUTE 23",
+      "type": "land",
+      "points": [
+        [
+          38,
+          100
+        ],
+        [
+          38,
+          45
+        ]
+      ]
+    },
+    {
+      "number": 24,
+      "name": "ROUTE 24",
+      "type": "land",
+      "points": [
+        [
+          170,
+          45
+        ],
+        [
+          170,
+          23
+        ]
+      ]
+    },
+    {
+      "number": 25,
+      "name": "ROUTE 25",
+      "type": "land",
+      "points": [
+        [
+          170,
+          23
+        ],
+        [
+          197.5,
+          23
+        ]
+      ]
+    }
+  ],
+  "branches": [
+    {
+      "name": "Power Plant access",
+      "type": "water",
+      "points": [
+        [
+          214,
+          45
+        ],
+        [
+          232,
+          45
+        ],
+        [
+          232,
+          61
+        ],
+        [
+          227,
+          61
+        ]
+      ]
+    },
+    {
+      "name": "Cerulean Cave access",
+      "type": "water",
+      "points": [
+        [
+          170,
+          34
+        ],
+        [
+          163,
+          34
+        ],
+        [
+          155,
+          34
+        ]
+      ]
+    },
+    {
+      "name": "Safari Zone entrance",
+      "type": "land",
+      "points": [
+        [
+          148,
+          144
+        ],
+        [
+          148,
+          129
+        ]
+      ]
+    },
+    {
+      "name": "Diglett north entrance",
+      "type": "land",
+      "points": [
+        [
+          60,
+          67
+        ],
+        [
+          69,
+          67
+        ]
+      ]
+    },
+    {
+      "name": "Diglett south entrance",
+      "type": "land",
+      "points": [
+        [
+          182,
+          111
+        ],
+        [
+          182,
+          107
+        ]
+      ]
+    }
+  ],
+  "underground": [
+    {
+      "name": "Diglett’s Cave",
+      "points": [
+        [
+          69,
+          67
+        ],
+        [
+          85,
+          67
+        ],
+        [
+          110,
+          86
+        ],
+        [
+          154,
+          103
+        ],
+        [
+          182,
+          107
+        ]
+      ]
+    },
+    {
+      "name": "Underground Path 5–6",
+      "points": [
+        [
+          170,
+          65
+        ],
+        [
+          181,
+          65
+        ],
+        [
+          181,
+          96
+        ],
+        [
+          170,
+          96
+        ]
+      ]
+    },
+    {
+      "name": "Underground Path 7–8",
+      "points": [
+        [
+          155,
+          78
+        ],
+        [
+          155,
+          89
+        ],
+        [
+          196,
+          89
+        ],
+        [
+          196,
+          78
+        ]
+      ]
+    }
+  ],
+  "flyRoads": [
+    [
+      [
+        60,
+        133
+      ],
+      [
+        60,
+        100
+      ]
+    ],
+    [
+      [
+        60,
+        100
+      ],
+      [
+        60,
+        56
+      ]
+    ],
+    [
+      [
+        60,
+        56
+      ],
+      [
+        104,
+        56
+      ],
+      [
+        104,
+        45
+      ]
+    ],
+    [
+      [
+        104,
+        45
+      ],
+      [
+        170,
+        45
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        170,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        78
+      ],
+      [
+        170,
+        111
+      ]
+    ],
+    [
+      [
+        137,
+        78
+      ],
+      [
+        170,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        78
+      ],
+      [
+        214,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        214,
+        45
+      ]
+    ],
+    [
+      [
+        214,
+        45
+      ],
+      [
+        214,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        111
+      ],
+      [
+        214,
+        111
+      ]
+    ],
+    [
+      [
+        214,
+        78
+      ],
+      [
+        214,
+        133
+      ]
+    ],
+    [
+      [
+        214,
+        133
+      ],
+      [
+        181,
+        133
+      ]
+    ],
+    [
+      [
+        181,
+        133
+      ],
+      [
+        181,
+        144
+      ]
+    ],
+    [
+      [
+        181,
+        144
+      ],
+      [
+        148,
+        144
+      ]
+    ],
+    [
+      [
+        137,
+        78
+      ],
+      [
+        93,
+        78
+      ]
+    ],
+    [
+      [
+        93,
+        78
+      ],
+      [
+        93,
+        144
+      ]
+    ],
+    [
+      [
+        93,
+        144
+      ],
+      [
+        148,
+        144
+      ]
+    ],
+    [
+      [
+        148,
+        144
+      ],
+      [
+        148,
+        166
+      ]
+    ],
+    [
+      [
+        148,
+        166
+      ],
+      [
+        60,
+        166
+      ]
+    ],
+    [
+      [
+        60,
+        166
+      ],
+      [
+        60,
+        133
+      ]
+    ],
+    [
+      [
+        60,
+        100
+      ],
+      [
+        38,
+        100
+      ]
+    ],
+    [
+      [
+        38,
+        100
+      ],
+      [
+        38,
+        45
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        170,
+        23
+      ]
+    ],
+    [
+      [
+        170,
+        23
+      ],
+      [
+        197.5,
+        23
+      ]
+    ]
+  ],
+  "miniRoads": [
+    [
+      [
+        60,
+        133
+      ],
+      [
+        60,
+        100
+      ]
+    ],
+    [
+      [
+        60,
+        100
+      ],
+      [
+        60,
+        56
+      ]
+    ],
+    [
+      [
+        60,
+        56
+      ],
+      [
+        104,
+        56
+      ],
+      [
+        104,
+        45
+      ]
+    ],
+    [
+      [
+        104,
+        45
+      ],
+      [
+        170,
+        45
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        170,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        78
+      ],
+      [
+        170,
+        111
+      ]
+    ],
+    [
+      [
+        137,
+        78
+      ],
+      [
+        170,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        78
+      ],
+      [
+        214,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        214,
+        45
+      ]
+    ],
+    [
+      [
+        214,
+        45
+      ],
+      [
+        214,
+        78
+      ]
+    ],
+    [
+      [
+        170,
+        111
+      ],
+      [
+        214,
+        111
+      ]
+    ],
+    [
+      [
+        214,
+        78
+      ],
+      [
+        214,
+        133
+      ]
+    ],
+    [
+      [
+        214,
+        133
+      ],
+      [
+        181,
+        133
+      ]
+    ],
+    [
+      [
+        181,
+        133
+      ],
+      [
+        181,
+        144
+      ]
+    ],
+    [
+      [
+        181,
+        144
+      ],
+      [
+        148,
+        144
+      ]
+    ],
+    [
+      [
+        137,
+        78
+      ],
+      [
+        93,
+        78
+      ]
+    ],
+    [
+      [
+        93,
+        78
+      ],
+      [
+        93,
+        144
+      ]
+    ],
+    [
+      [
+        93,
+        144
+      ],
+      [
+        148,
+        144
+      ]
+    ],
+    [
+      [
+        148,
+        144
+      ],
+      [
+        148,
+        166
+      ]
+    ],
+    [
+      [
+        148,
+        166
+      ],
+      [
+        60,
+        166
+      ]
+    ],
+    [
+      [
+        60,
+        166
+      ],
+      [
+        60,
+        133
+      ]
+    ],
+    [
+      [
+        60,
+        100
+      ],
+      [
+        38,
+        100
+      ]
+    ],
+    [
+      [
+        38,
+        100
+      ],
+      [
+        38,
+        45
+      ]
+    ],
+    [
+      [
+        170,
+        45
+      ],
+      [
+        170,
+        23
+      ]
+    ],
+    [
+      [
+        170,
+        23
+      ],
+      [
+        197.5,
+        23
+      ]
+    ]
+  ],
+  "sources": [
+    "https://archives.bulbagarden.net/wiki/File:KantoTownMap.png",
+    "https://github.com/pret/pokefirered/blob/master/src/data/region_map/region_map_sections.json",
+    "https://github.com/pret/pokefirered/blob/master/src/data/region_map/region_map_layout_kanto.h"
+  ],
+  "note": "Approval-only FRLG cartography. Towns use the GBA regional grid. Landmarks are visually separated for regional readability. No game source changes."
+}

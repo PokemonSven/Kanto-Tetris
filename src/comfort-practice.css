@@ -1,0 +1,17 @@
+.comfort-row{display:grid;grid-template-columns:1fr auto;gap:8px;margin:14px 0;font-size:12px;line-height:1.5}
+.comfort-row input,.comfort-row select{grid-column:1/-1;width:100%;accent-color:#255b40}.comfort-row input{min-height:28px}
+.comfort-toggle{display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;margin:14px 0}.comfort-toggle input{width:20px;height:20px;flex-shrink:0;accent-color:#255b40}.comfort-toggle small{display:block;font-size:10px;margin-top:3px;font-weight:normal}
+body.comfort-still *,body.comfort-still *:before,body.comfort-still *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+body.comfort-still .gym-shake{transform:none!important}
+body.comfort-still .battle-damage-number{display:none}
+body.comfort-calm *,body.comfort-calm *:before,body.comfort-calm *:after{animation:none!important}
+body.comfort-calm .moment-rays,body.comfort-calm .moment-card:before,body.comfort-calm .moment-card:after,body.comfort-calm .capture-rays,body.comfort-calm .intro-star{display:none!important}
+body.comfort-calm #game,body.comfort-calm .gym-flash{filter:none!important}
+body.comfort-still .moment-modal.show,body.comfort-calm .moment-modal.show{opacity:1}
+#practiceModal,#practiceResults{z-index:107}#practiceModal .controls-card,#practiceResults .controls-card{position:relative;left:auto;top:auto;transform:none;width:min(710px,92vw);max-height:92vh;overflow:auto;padding:22px}
+.practice-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.practice-form label{display:flex;flex-direction:column;gap:8px;font-size:12px;line-height:1.5}.practice-form select{padding:10px;background:#e0f8cf;color:#071821;border:2px solid #071821;font:inherit}
+.practice-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.practice-actions button{flex:1;padding:12px;font:inherit;font-size:12px}
+.practice-copy{font-size:12px;line-height:1.7}.practice-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px}.practice-metrics div{background:#e0f8cf;border:2px solid #17334a;padding:14px;font-size:12px;line-height:1.8}.practice-metrics strong{display:block;font-size:20px}
+#practiceFreeInfo{display:none;font-size:12px;line-height:1.8;padding:18px;border:2px solid #17334a;background:#e0f8cf;color:#071821}#practiceFreeInfo strong{display:block;font-size:16px;margin-bottom:10px}
+body.practice-free .compact-map .screen>*{display:none!important}body.practice-free .compact-map .screen>#practiceFreeInfo{display:block!important}
+@media(max-width:700px){.practice-form{grid-template-columns:1fr}}

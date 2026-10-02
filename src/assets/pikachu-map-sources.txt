@@ -1,0 +1,15 @@
+Pikachu map marker — asset provenance
+
+Running frames (32x32 cells, side-facing frames 4 and 5):
+https://github.com/rh-hideout/pokeemerald-expansion/blob/master/graphics/pokemon/pikachu/overworld.png
+Original downloaded file: pikachu-overworld-walk-v1.png
+Palette reference: pikachu-overworld-walk-v1.pal
+
+Seated/resting GBA pose (first 16x16 cell):
+https://github.com/pret/pokeemerald/blob/master/graphics/object_events/pics/pokemon/pikachu.png
+Original downloaded file: pikachu-overworld-gba-v1.png
+Frame reference: https://github.com/pret/pokeemerald/blob/master/src/data/object_events/object_event_pic_tables.h
+
+Pokémon character art: Nintendo / Game Freak / The Pokémon Company, via the above public decompilation projects and their contributors.
+The original downloaded images are retained unchanged. The game treats palette entry zero as transparent while drawing, as the source games do.
+The route animation alternates the two movement poses and adds a one-pixel hop. The town pose is static. No network request is made at runtime; both images are embedded in each release.

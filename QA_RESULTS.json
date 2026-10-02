@@ -1,0 +1,1021 @@
+{
+  "version": "1.8.16",
+  "checkedFrom": "1.8.15",
+  "finalFailures": 0,
+  "passed": 2749,
+  "suites": 98,
+  "sourceChanges": [
+    "src\\android-handheld.css",
+    "src\\game-shell.html"
+  ],
+  "gameLogicUnchanged": true,
+  "offlineAudioAssets": 42,
+  "apkSha256": "67c733ac3c89eab161b31441ae0036e7dac3a8da6262f4712352f13c0bbff314",
+  "windowsHTMLSha256": "5970f9162db4b12b326d6ad4c70dd9f99bbda759a9398854b5dd389af3600d0d",
+  "fixes": [
+    "Windows badge art now loads from the bundled sheet offline.",
+    "Long Android Rocket dialogue uses the available height and readable line spacing.",
+    "Wide Android displays correctly apply 32px body / 36px action text.",
+    "Nickname editor uses a wider handheld panel to reduce wrapping."
+  ],
+  "testCorrections": [
+    "HOLD/NEXT and Nova minimum sizes now reflect the intentional 108\u00d772 Android previews; size, alignment and tile equality remain checked.",
+    "Ghost pixels are sampled at the actual raster cell size, instead of legacy 30px coordinates.",
+    "Dense Oak and nickname menus allow intentional handheld scrolling, while verifying every controller action is visible/reachable and text does not overflow."
+  ],
+  "scope": [
+    "Adventure/Rogue progression, all Gym/League/Champion battles, Rocket story, legendary trials, Tower, rewards and evolution.",
+    "Three Adventure slots, Rogue saves, legacy migration, invalid backups, failed writes, Practice isolation and Android file exchange.",
+    "Keyboard/controller movement, Hold, drop, repeat/held-button behavior, pause, disconnect and lifecycle.",
+    "Uniform grid at fractional scaling, map/Fly/Pikachu position, menus, title art, offline assets and music playback.",
+    "6,600 randomized input actions per stress run at levels 1, 8 and 15."
+  ],
+  "limitations": [
+    "Android 11 / WebView 83 emulator; a physical Retroid Pocket Nova was not connected.",
+    "Real controller hardware modes, physical-screen comfort, audio quality, thermal/battery behavior and device sleep/wake still need an on-device check.",
+    "Windows was tested in the browser preview; direct file launch and every browser/OS combination were not automated.",
+    "Baseline suites remain valid for unchanged game logic; presentation changes received focused 1.8.16 regressions. No claim of exhaustive bug absence."
+  ],
+  "results": [
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "all",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 78,
+      "failed": [],
+      "evidence": "android/fixed/all-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "audio-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/fixed/audio-native-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "files",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/files-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "handheld-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 32,
+      "failed": [],
+      "evidence": "android/fixed/handheld-native-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "map-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/map-native-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "preview-nickname",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/final/preview-nickname-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "preview-rocket",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/final/preview-rocket-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-audio",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 16,
+      "failed": [],
+      "evidence": "android/baseline/suite-audio-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-audit",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "android/fixed/suite-audit-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-backups",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 26,
+      "failed": [],
+      "evidence": "android/baseline/suite-backups-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-brock",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 25,
+      "failed": [],
+      "evidence": "android/baseline/suite-brock-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-campaign",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 141,
+      "failed": [],
+      "evidence": "android/baseline/suite-campaign-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-controls",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 34,
+      "failed": [],
+      "evidence": "android/baseline/suite-controls-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-expansion",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 53,
+      "failed": [],
+      "evidence": "android/baseline/suite-expansion-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-features",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 20,
+      "failed": [],
+      "evidence": "android/baseline/suite-features-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-grid",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "android/baseline/suite-grid-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-handheld",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 12,
+      "failed": [],
+      "evidence": "android/fixed/suite-handheld-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-keepsakes",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 37,
+      "failed": [],
+      "evidence": "android/fixed/suite-keepsakes-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-map",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 21,
+      "failed": [],
+      "evidence": "android/baseline/suite-map-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-milestones",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 44,
+      "failed": [],
+      "evidence": "android/baseline/suite-milestones-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-nova",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 15,
+      "failed": [],
+      "evidence": "android/final/suite-nova-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-oak",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 31,
+      "failed": [],
+      "evidence": "android/final/suite-oak-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-pause",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 13,
+      "failed": [],
+      "evidence": "android/baseline/suite-pause-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-practice",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 51,
+      "failed": [],
+      "evidence": "android/fixed/suite-practice-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-rocket",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 35,
+      "failed": [],
+      "evidence": "android/fixed/suite-rocket-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-slots",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "android/baseline/suite-slots-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-speed",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 17,
+      "failed": [],
+      "evidence": "android/baseline/suite-speed-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-tetris",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 22,
+      "failed": [],
+      "evidence": "android/fixed/suite-tetris-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-title",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/suite-title-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-tower",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "android/baseline/suite-tower-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "suite-ui",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 23,
+      "failed": [],
+      "evidence": "android/fixed/suite-ui-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "16x9",
+      "suite": "title-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 24,
+      "failed": [],
+      "evidence": "android/fixed/title-native-16x9.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "all",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 78,
+      "failed": [],
+      "evidence": "android/fixed/all-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "audio-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/fixed/audio-native-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "files",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/files-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "handheld-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 32,
+      "failed": [],
+      "evidence": "android/fixed/handheld-native-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "map-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/map-native-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "preview-nickname",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/final/preview-nickname-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "preview-rocket",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 5,
+      "failed": [],
+      "evidence": "android/final/preview-rocket-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-audio",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 16,
+      "failed": [],
+      "evidence": "android/baseline/suite-audio-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-audit",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "android/fixed/suite-audit-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-backups",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 26,
+      "failed": [],
+      "evidence": "android/baseline/suite-backups-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-brock",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 25,
+      "failed": [],
+      "evidence": "android/baseline/suite-brock-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-campaign",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 141,
+      "failed": [],
+      "evidence": "android/baseline/suite-campaign-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-controls",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 34,
+      "failed": [],
+      "evidence": "android/baseline/suite-controls-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-expansion",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 53,
+      "failed": [],
+      "evidence": "android/baseline/suite-expansion-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-features",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 20,
+      "failed": [],
+      "evidence": "android/baseline/suite-features-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-grid",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "android/baseline/suite-grid-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-handheld",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 12,
+      "failed": [],
+      "evidence": "android/fixed/suite-handheld-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-keepsakes",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 37,
+      "failed": [],
+      "evidence": "android/fixed/suite-keepsakes-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-map",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 21,
+      "failed": [],
+      "evidence": "android/baseline/suite-map-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-milestones",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 44,
+      "failed": [],
+      "evidence": "android/baseline/suite-milestones-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-nova",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 15,
+      "failed": [],
+      "evidence": "android/final/suite-nova-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-oak",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 31,
+      "failed": [],
+      "evidence": "android/final/suite-oak-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-pause",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 13,
+      "failed": [],
+      "evidence": "android/baseline/suite-pause-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-practice",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 51,
+      "failed": [],
+      "evidence": "android/fixed/suite-practice-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-rocket",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 35,
+      "failed": [],
+      "evidence": "android/fixed/suite-rocket-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-slots",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "android/baseline/suite-slots-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-speed",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 17,
+      "failed": [],
+      "evidence": "android/baseline/suite-speed-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-tetris",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 22,
+      "failed": [],
+      "evidence": "android/fixed/suite-tetris-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-title",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "android/fixed/suite-title-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-tower",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "android/baseline/suite-tower-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "suite-ui",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 23,
+      "failed": [],
+      "evidence": "android/fixed/suite-ui-4x3.txt"
+    },
+    {
+      "platform": "Android emulator",
+      "aspect": "4x3",
+      "suite": "title-native",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 24,
+      "failed": [],
+      "evidence": "android/fixed/title-native-4x3.txt"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "audio",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 16,
+      "failed": [],
+      "evidence": "windows/fixed/audio-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "audit",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "windows/fixed/audit-16x9-offline.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "controls",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 34,
+      "failed": [],
+      "evidence": "windows/fixed/controls-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "grid",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "windows/fixed/grid-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "keepsakes",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 37,
+      "failed": [],
+      "evidence": "windows/fixed/keepsakes-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "map",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 21,
+      "failed": [],
+      "evidence": "windows/fixed/map-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "oak",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 31,
+      "failed": [],
+      "evidence": "windows/fixed/oak-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "rocket",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 35,
+      "failed": [],
+      "evidence": "windows/fixed/rocket-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "tetris",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 22,
+      "failed": [],
+      "evidence": "windows/fixed/tetris-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "title",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "windows/fixed/title-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "16x9",
+      "suite": "ui",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 23,
+      "failed": [],
+      "evidence": "windows/fixed/ui-16x9.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "audio",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 16,
+      "failed": [],
+      "evidence": "windows/initial/audio-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "audit",
+      "build": "1.8.16",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "windows/fixed/audit-4x3-offline.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "backups",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 26,
+      "failed": [],
+      "evidence": "windows/initial/backups-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "brock",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 25,
+      "failed": [],
+      "evidence": "windows/initial/brock-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "campaign",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 141,
+      "failed": [],
+      "evidence": "windows/initial/campaign-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "controls",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 34,
+      "failed": [],
+      "evidence": "windows/initial/controls-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "expansion",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 53,
+      "failed": [],
+      "evidence": "windows/initial/expansion-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "features",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 20,
+      "failed": [],
+      "evidence": "windows/initial/features-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "grid",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 8,
+      "failed": [],
+      "evidence": "windows/initial/grid-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "keepsakes",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 37,
+      "failed": [],
+      "evidence": "windows/initial/keepsakes-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "map",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 21,
+      "failed": [],
+      "evidence": "windows/initial/map-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "milestones",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 44,
+      "failed": [],
+      "evidence": "windows/initial/milestones-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "nova",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 15,
+      "failed": [],
+      "evidence": "windows/initial/nova-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "oak",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 31,
+      "failed": [],
+      "evidence": "windows/initial/oak-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "pause",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 13,
+      "failed": [],
+      "evidence": "windows/initial/pause-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "practice",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 51,
+      "failed": [],
+      "evidence": "windows/initial/practice-4x3-corrected.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "rocket",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 35,
+      "failed": [],
+      "evidence": "windows/initial/rocket-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "slots",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "windows/initial/slots-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "speed",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 17,
+      "failed": [],
+      "evidence": "windows/initial/speed-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "tetris",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 22,
+      "failed": [],
+      "evidence": "windows/initial/tetris-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "title",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 7,
+      "failed": [],
+      "evidence": "windows/initial/title-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "tower",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 36,
+      "failed": [],
+      "evidence": "windows/initial/tower-4x3.json"
+    },
+    {
+      "platform": "Windows browser",
+      "aspect": "4x3",
+      "suite": "ui",
+      "build": "1.8.15",
+      "result": "PASS",
+      "checks": 23,
+      "failed": [],
+      "evidence": "windows/initial/ui-4x3.json"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+body #rocketSceneModal{z-index:142;background:rgba(4,15,23,.88);padding:12px}
+body #controlsConfirm{z-index:170}
+body #backupModal{z-index:165}
+body #questsModal .controls-card{width:min(1080px,calc(100vw - 32px));max-width:1080px}
+.rocket-scene-card{width:min(1420px,100%);height:min(850px,calc(100vh - 24px));box-sizing:border-box;display:flex;flex-direction:column;border:6px double #112d31;background:#e1f2cd;color:#102b32;box-shadow:0 0 0 5px #c74342;font:18px/1.6 monospace}
+.rocket-scene-card header{display:flex;justify-content:space-between;gap:16px;background:#1c3541;color:#f3e4c7;padding:14px 22px;font-weight:bold;font-size:14px}
+.rocket-scene-body{display:grid;grid-template-columns:33% 1fr;gap:24px;padding:24px;flex:1;min-height:0}
+.rocket-portrait-frame{min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:repeating-linear-gradient(0deg,#c1d9b8 0 24px,#bfd6b7 24px 48px);border:4px solid #42675f;overflow:hidden}
+.rocket-portrait-frame img{display:block;width:100%;height:calc(100% - 48px);min-height:0;object-fit:contain;image-rendering:pixelated}
+.rocket-portrait-frame b{width:100%;background:#1c3541;color:#fff3d3;text-align:center;padding:8px 0;font-size:16px}
+.rocket-scene-copy{min-height:0;overflow-y:auto;display:flex;flex-direction:column;justify-content:center;gap:12px}
+.rocket-scene-copy h2{font-size:clamp(22px,2.5vw,36px);line-height:1.2;margin:0}
+.rocket-scene-copy p{margin:0}.rocket-scene-copy #rocketDialogue{font-size:clamp(18px,1.6vw,24px);line-height:1.6}
+#rocketSceneReward{border-top:2px solid #7c986e;padding-top:14px;font-size:14px}#rocketSceneError{color:#9d2626;font-weight:bold}
+#rocketSceneActions{display:grid;gap:12px;margin-top:10px}.rocket-scene-card button{min-height:48px;font:inherit;font-size:16px;background:#fff2d5;color:#162e32;border:3px solid #526454;padding:10px;cursor:pointer;text-align:left}
+.rocket-scene-card footer{display:flex;justify-content:space-between;gap:12px;padding:12px 24px;background:#c7dcb2}.rocket-scene-card footer button{font-size:14px}
+#townRocket{display:flex;align-items:center;gap:16px;border:3px solid #455951;padding:12px;margin:12px 0;background:#d6e6be}#townRocket[hidden]{display:none}#townRocket img{width:80px;height:110px;object-fit:contain;image-rendering:pixelated}#townRocket p{margin:6px 0}#townRocket button{padding:8px}
+#questsModal .controls-card{max-width:1080px}#rocketQuest{font:15px/1.5 monospace;margin:0 0 24px}#rocketQuest h3{font-size:23px;margin:4px 0}#rocketQuest p{margin:7px 0}.rocket-journal-head{padding:16px;background:#1c3541;color:#fff2d5}.rocket-journal-head span{font-size:12px;color:#d4e9bc}.rocket-chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}.rocket-chapters article,#rocketQuest details{padding:12px;border:2px solid #4c6b53;background:#e2f0ce}.rocket-chapters button,#rocketWithdraw{padding:10px;font-size:13px;width:100%}#rocketQuest summary{cursor:pointer;padding:8px}#rocketQuest details article{padding:8px;border-top:1px solid #7d986e}
+@media(max-height:740px){.rocket-scene-card{font-size:16px}.rocket-scene-body{gap:18px;padding:16px}.rocket-scene-copy{gap:8px}.rocket-scene-copy #rocketDialogue{font-size:18px;line-height:1.45}.rocket-scene-card header{padding:8px 14px;font-size:12px}.rocket-scene-card footer{padding:8px 16px}.rocket-scene-card button{font-size:14px;padding:8px;min-height:42px}#rocketSceneReward{padding-top:8px;font-size:12px}#rocketSceneActions{gap:8px}}
+@media(max-width:760px){.rocket-chapters{grid-template-columns:1fr}.rocket-scene-body{grid-template-columns:25% 1fr;gap:10px;padding:12px}.rocket-scene-card header{flex-direction:column;gap:0}.rocket-portrait-frame b{font-size:10px}.rocket-scene-card footer button{font-size:11px}.rocket-scene-copy #rocketDialogue{font-size:16px}}

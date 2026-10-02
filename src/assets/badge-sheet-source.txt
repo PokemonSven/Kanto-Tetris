@@ -1,0 +1,4 @@
+Original game badge sheet, bundled unchanged for Android offline use in 1.8.14.
+Source already referenced by FAN_BADGE_URL in src/game-shell.html:
+https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/047b54d1-c76e-4227-83a9-b7f68b146cbc/d7znghx-8617afea-7733-43f0-9db4-7746fd951c5d.png
+Retrieved 2026-10-01. Existing game credits and crops are retained.

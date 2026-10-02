@@ -1,0 +1,45 @@
+{
+  "battle": [
+    "startGymBattle",
+    "loadGymPokemon",
+    "beginGymFight",
+    "defeatGymPokemon",
+    "completeGymBattle",
+    "failGymBattle",
+    "teamBlackout",
+    "endGame",
+    "startEliteBattle",
+    "leagueBattleLoss"
+  ],
+  "travel": [
+    "routeChainStartAtCursor",
+    "routeChainShowTownAtCursor",
+    "routeChainContinueFromTownCursor",
+    "routeChainAdvance",
+    "routeChainTrainFromTownCursor",
+    "trainingFlowStartFromTown",
+    "routeChainChallengeTownGym",
+    "routeChainTownAfterGymLoss",
+    "gymReturnToDefeatedTownAfterBadge"
+  ],
+  "saves": [
+    "cleanRunSaveObject",
+    "runSnapshot",
+    "saveRunProgress",
+    "loadRunProgress"
+  ],
+  "hazards": [
+    "updateGymLeaderSpecials",
+    "nextViewerHidden",
+    "pullPendingGymSpecialPiece"
+  ],
+  "rocket": ["startRocketBattle","completeRocketBattle","rocketBattleLoss","updateRocketHazards","validateRocketSave"],
+  "tower": ["startTowerSet","startTowerRound","completeTowerRound","finishTowerSet","updateTowerHazards","validateTowerSave"],
+  "story": [
+    "startStoryBattle",
+    "completeStoryBattle",
+    "storyBattleLoss",
+    "updateStoryHazards",
+    "syncStoryTrainers"
+  ]
+}

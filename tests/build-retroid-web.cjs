@@ -1,0 +1,36 @@
+const fs=require('fs'),path=require('path'),vm=require('vm');
+const root=path.resolve(__dirname,'..'),out=path.join(root,'builds/Kanto_Tetris_Build_1_8_16_QA_Fixes');
+let html=fs.readFileSync(path.join(root,'src/game-shell.html'),'utf8');
+const read=file=>fs.readFileSync(path.join(root,'src',file),'utf8');
+for(const name of ['save-storage.js','save-validation.js','save-portability.js','tetris/render.js'])html=html.replace('/* SOURCE: '+name+' */',()=>read(name));
+const owners=require('../src/campaign/ownership.json');
+const campaign=[read('campaign/roster.js'),read('campaign/trainer.js'),read('campaign/keepsakes.js'),read('rogue.js'),read('comfort.js'),read('practice.js'),read('tetris/engine.js'),...Object.keys(owners).map(name=>read(`campaign/${name}.js`)),read('campaign/ui.js')].join('\n');
+const entryPoints=[...Object.values(owners).flat(),...require('../src/tetris/ownership.json')];
+for(const name of entryPoints){
+ const defs=[...campaign.matchAll(new RegExp(`function ${name}\\(`,'g'))];
+ if(defs.length!==1||new RegExp(`(?:function ${name}\\(|\\b${name}\\s*=\\s*function)`).test(html))throw Error('Campaign ownership violated: '+name);
+}
+html=html.replace('/* CAMPAIGN_MODULES */',()=>campaign);
+html=html.replace('__GARY_PORTRAIT__',()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets/gary-rival-v1.png')).toString('base64'));
+const anchor='initializeControlsUI();initializeSavePortability();initializeCompactUI();initCropEditorEvents();';
+if(!html.includes(anchor))throw Error('Missing initialization');
+const compactStart=html.indexOf('// Build 1.7.4: approved layout, with the existing engine and storage unchanged.');
+const compactEnd=html.indexOf(anchor,compactStart);
+if(compactStart<0||compactEnd<0)throw Error('Missing compact UI source boundary');
+html=html.slice(0,compactStart)+read('compact-ui.js')+'\n'+html.slice(compactEnd);
+html=html.replace(anchor,()=>['collection-tools.js','battle-feedback.js','milestones.js','adventure-intro.js','keepsakes-ui.js','adventure-slots.js','pixel-map.js','soundtrack.js'].map(read).join('\n')+'\ninitializeSoundtrack();initializeControlsUI();initializeSavePortability();initializeCompactUI();initializeSoundtrackUI();initializeTetrisUI();initializeCampaignUI();initializeCollectionTools();initializeBattleFeedback();initializeComfort();initializePractice();initializeExpansion();initializeMilestones();initializePixelMap();initializeAdventureIntro();initializeRocketStory();initializeKeepsakes();initializeAdventureSlots();initializeTower();initCropEditorEvents();');
+html=html.replace('</head>',()=>'<style>'+read('collection-battle.css')+read('tetris/tetris.css')+read('comfort-practice.css')+read('expansion.css')+read('milestones.css')+read('adventure-intro.css')+read('rocket-story.css')+read('keepsakes.css')+read('adventure-slots.css')+read('tower.css')+read('pixel-map.css')+read('soundtrack.css')+read('title-screen.css')+'</style></head>');
+html=html.replace('__KANTO_MAP_DATA__',()=>JSON.stringify(JSON.parse(read('assets/kanto-map-gba-v1.json'))));
+html=html.replace('__KANTO_MAP_ART__',()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets/kanto-map-gba-v1.png')).toString('base64'));
+for(const [token,file] of [['__KANTO_PIKACHU_RUN__','pikachu-overworld-walk-v1.png'],['__KANTO_PIKACHU_SIT__','pikachu-overworld-gba-v1.png']])html=html.replace(token,()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets',file)).toString('base64'));
+for(const [token,file] of [['__OAK_PORTRAIT__','oak-portrait-v1.png'],['__OAK_LAB__','oak-lab-v1.png'],['__ROCKET_GRUNT__','rocket-grunt-v1.png'],['__ROCKET_MIRA__','researcher-mira-v1.png']])html=html.replace(token,()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets',file)).toString('base64'));
+html=html.replace('__FRLG_SOUNDTRACK__',()=>JSON.stringify(require('../src/assets/soundtrack.json')));
+html=html.replace('__KANTO_TITLE_ART__',()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets/kanto-title-tree-v1.png')).toString('base64'));
+html=html.replace('__KANTO_BADGE_ART__',()=> 'data:image/png;base64,'+fs.readFileSync(path.join(root,'src/assets/badge-sheet-v1.png')).toString('base64'));
+const assets=JSON.parse(read('assets/embedded.json'));
+html=html.replace(/__KANTO_EMBEDDED_(\d+)__/g,(_,i)=>{if(!assets[i])throw Error('Missing embedded asset '+i);return assets[i]});
+html=html.replaceAll('Build 1.7.4','Build 1.8.16').replaceAll('build:"1.7.4"','build:"1.8.16"');
+for(const m of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi))new vm.Script(m[1]);
+fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'index.html'),html);
+require('./copy-soundtrack.cjs')(out);
+console.log(`Built 1.8.16: ${entryPoints.length} campaign/Tetris entry points have one owner; offline pixel map embedded.`);

@@ -1,0 +1,77 @@
+/* Full-screen controller layout: previews/team left, tall square-cell board,
+   title/Menu and map/battle right. No outer letterbox or unused center rail. */
+body .dex-shell{position:relative;width:calc(100vw - 12px);max-width:calc(100vw - 12px);padding:8px 12px;grid-template-rows:48px minmax(0,1fr)}
+body .dex-shell.fullscreen-game{width:calc(100vw - 4px);max-width:calc(100vw - 4px);height:calc(100dvh - 4px);margin:2px auto;padding:0 8px;border-width:3px;grid-template-rows:minmax(0,1fr);gap:0}
+body .fullscreen-game>.header{position:absolute;top:8px;right:8px;width:calc((100% - 32px - (var(--board-h)/2 + 8px))/2);height:78px;display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:8px}
+body .fullscreen-game .brand{justify-content:center;gap:10px}
+body .fullscreen-game .brand h1{font-size:27px}
+body .fullscreen-game .blue-light{width:32px;height:32px}
+body .fullscreen-game .brand .dot{width:7px;height:7px}
+body .fullscreen-game #mainMenuBtn{height:32px;font-size:12px;padding:5px 15px}
+body .game-layout{grid-template-columns:minmax(0,1fr) calc(var(--board-h)/2 + 8px) minmax(0,1fr);gap:12px}
+.compact-left{display:flex;flex-direction:column;min-height:0;min-width:0;gap:12px;padding:6px 0}
+body .compact-board-frame{padding:0!important;border-width:2px;box-shadow:none;border-radius:6px}
+/* The canvas already has physical-resolution cells. Avoid the extra nearest-
+   neighbour enlargement that pixelated applies in older Android WebViews. */
+body #game{position:relative;image-rendering:auto;transform:translateZ(0)}
+body .compact-board-frame .boardbox{width:calc(var(--board-h)/2 + 4px);height:calc(var(--board-h) + 4px);border-width:2px}
+body .fullscreen-game .third{padding-top:88px;padding-bottom:6px}
+body .compact-trainer{height:248px!important;padding:4px!important}
+body .compact-trainer>.screen{height:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:130px minmax(0,1fr);gap:8px;padding:6px;border-width:3px}
+.compact-hold{grid-column:1;grid-row:1;font-size:12px}
+.compact-hold canvas{width:144px;height:96px;max-width:100%;border:2px solid var(--ink)}
+.compact-hold small{font-size:9px;line-height:11px;min-height:11px;text-align:center}
+.hold-unavailable canvas{opacity:.6}
+body .compact-next{grid-column:2;grid-row:1;border-left:1px solid #93b678;padding-left:6px;gap:6px;font-size:12px}
+body #next{width:144px;height:96px;max-width:100%;border:2px solid var(--ink)}
+body .compact-hold,body .compact-next{display:grid;grid-template-rows:14px 96px 12px;justify-items:center;align-content:center;gap:4px}
+body .compact-data{grid-column:1/-1;grid-row:2;min-width:0;align-self:center}
+body .compact-numbers{gap:10px;justify-content:space-between}
+body .compact-numbers .stat{gap:1px;flex-direction:column;align-items:flex-start}
+body .compact-numbers .k{font-size:10px}
+body .compact-numbers .v{font-size:20px;line-height:24px}
+body .compact-data .rowline{font-size:11px;line-height:14px;margin:7px 0 4px;flex-wrap:wrap}
+body .compact-data #gymGoalText{max-width:100%;text-align:right}
+body .compact-team .pixel-title{font-size:14px}
+body #teamGrid{grid-template-rows:repeat(3,minmax(0,1fr))}
+body #teamGrid .team-slot canvas{width:112px;height:112px;image-rendering:pixelated}
+body .compact-mon-name{font-size:11px}
+body .compact-mon-name small{font-size:10px}
+body #teamGrid .team-slot{gap:2px}
+body #teamGrid .team-slot canvas{margin-top:0}
+body .team-bar-row{font-size:10px;grid-template-columns:24px minmax(0,1fr);gap:4px}
+body .team-bar-row>span:first-child{grid-column:1;grid-row:1}
+body .team-bar-row>.team-bar{grid-column:2;grid-row:1}
+body .team-bar-row>span:last-child{grid-column:2;grid-row:1;justify-self:center;z-index:1;text-align:center;color:#142d20;line-height:16px}
+body .team-bar{height:16px}
+body .team-bar i{background:#9bc479}
+body .team-bar .mid{background:#e4c46c}body .team-bar .low{background:#eca79d}body .team-bar .ko{background:#aaa}
+body .team-exp i{background:#9bcad6}
+body .compact-active{font-size:8px}
+body .compact-map{flex:1;min-height:0}
+body .compact-map>.screen{height:100%;display:flex;flex-direction:column;justify-content:space-between;padding:12px}
+body .compact-map>.screen>*{flex-shrink:0}
+body .map-panel-title{font-size:15px}
+body #mapRouteText{font-size:10px}
+body #kantoMap{width:100%;max-width:calc((100vh - 650px)*1.25);height:auto;margin:8px auto;flex:none}
+body .wild-box{grid-template-columns:76px minmax(0,1fr);gap:10px;padding:8px;margin-top:8px}
+body #wildPortrait{width:76px;height:76px}
+body .wild-info b{font-size:12px}
+body .wild-info .tiny{font-size:10px}
+body .wild-hp-row{font-size:9px}
+body .wild-hp-meter{height:11px}
+body #battleFeedback{font-size:12px;padding:12px 9px;margin-top:8px}
+body #battleQueued,body #battleDamage{font-size:11px}
+body .gym-mini b{font-size:13px}
+body .gym-mini .tiny{font-size:11px}
+.compact-quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.compact-quick-actions button{min-height:48px;padding:8px 5px;font-size:12px;white-space:normal}
+.trainer-card-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 24px}
+.trainer-card-summary>div{background:#e0f8cf;border:2px solid #173428;padding:14px;color:var(--ink)}
+.trainer-card-summary dt{font-size:11px;margin-bottom:8px}.trainer-card-summary dd{margin:0;font-size:17px;overflow-wrap:anywhere}
+.trainer-card-team{grid-column:1/-1}
+@media(max-height:850px){body #kantoMap{max-width:calc((100vh - 490px)*1.25)}.compact-quick-actions{gap:6px;margin-top:8px}.compact-quick-actions button{min-height:40px;font-size:11px}}
+@media(min-width:1600px){body .fullscreen-game .brand h1{font-size:31px}body .fullscreen-game>.header{flex-wrap:nowrap}body .compact-numbers .v{font-size:24px}body #teamGrid .team-slot canvas{width:128px;height:128px}}
+@media(max-height:850px){body #teamGrid .team-slot canvas{width:52px;height:52px}body .compact-mon-name{font-size:10px}body .team-bar-row{font-size:9px}body .team-bar{height:13px}body .team-bar-row>span:last-child{line-height:13px}body .wild-box{padding:5px;grid-template-columns:60px minmax(0,1fr)}body #wildPortrait{width:60px;height:60px}body #battleFeedback{padding:7px;font-size:11px}body #battleQueued,body #battleDamage{font-size:10px}}
+@media(max-width:1050px){body .fullscreen-game .brand h1{font-size:21px}body .fullscreen-game .brand .dot{display:none}body .compact-mon-name{font-size:9px}body .compact-mon-name small{font-size:8px}body #teamGrid .team-slot{padding:5px}body .team-bar-row{font-size:9px;grid-template-columns:20px minmax(0,1fr)}}
+@media(max-width:700px){body .game-layout{display:flex;flex-direction:column}body .compact-left{order:1}body .third{order:2}body .compact-trainer{height:248px!important}body .compact-map>.screen{height:auto}body #kantoMap{max-width:100%;width:270px}body .compact-team{min-height:530px}body .play-column{min-height:calc(var(--board-h) + 28px)}}

@@ -1,0 +1,7 @@
+Kanto Tetris 1.8.4 — built-in imagegen, 2026-09-30
+
+ROCKET GRUNT
+Use case: stylized-concept. Transparent pixel-art portrait for a family-friendly monster-collecting puzzle game. An adult male Team Rocket grunt, fully dressed in classic black cap and high-collared black uniform, red R emblem on chest, long sleeves, grey gloves, trousers and boots. Friendly theatrical villain with confident crossed arms. Entire body visible, centered, generous padding. GBA-inspired trainer sprite illustration: crisp visible square pixels, dark outlines, limited palette and flat clustered shadows. No gradients or smoothing. No scenery, border, writing, or watermark. Transparent alpha background.
+
+RESEARCHER MIRA
+Use case: stylized-concept. Asset type: transparent pixel-art character portrait for Kanto Tetris dialogue. A friendly adult Pokémon field researcher called Mira, with round glasses, dark brown hair in a short ponytail, mint green field jacket over a cream shirt, practical tan trousers, closed brown walking boots, holding a small notebook with no writing visible and a red-and-white Poké Ball. Fully clothed full-body figure, warm concerned expression, one hand gesturing toward the player, three-quarter view facing slightly right, centered with safe padding. Match crisp GBA-inspired Pokémon trainer sprite illustration, chunky square pixels, dark outlines, limited color clusters and restrained flat cel shading. No scenery, border, typography, watermark, gradients, or smoothing. Genuine transparent alpha background.

@@ -1,0 +1,11 @@
+* text=auto
+# Preserve verified asset and source bytes when cloning on either platform.
+src/** -text
+*.png binary
+*.mp3 binary
+*.apk binary
+*.zip binary
+index.html -text -diff
+src/assets/embedded.json -diff
+src/assets/music-loop/*.js -diff
+music/*.js -text -diff

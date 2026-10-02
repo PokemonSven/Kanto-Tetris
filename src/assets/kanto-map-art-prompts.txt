@@ -1,0 +1,31 @@
+Built-in image_gen preview prompts
+
+FINAL BASE MAP
+EDIT THE PROVIDED LAYOUT GUIDE INTO A FINISHED PIXEL-ART MAP. The guide is the canvas to paint over, NOT a loose reference. DO NOT change its composition. Keep every red block center, purple landmark square center, and path vertex exactly where it is in the guide. In particular, the western towns MUST stay on the guide's x=25% column; Cerulean, Saffron and Vermilion MUST stay on x=70.833%; Indigo MUST be x=15.833%; Fuchsia MUST be x=61.667%; Cinnabar MUST be x=25%; Celadon MUST be x=57.083%. Do not move them into some other preconceived map layout.
+
+Create crisp top-down GBA pixel art, high detail foliage, little 16-bit roof sprites, rocky cliffs, rich textured deep-blue sea with turquoise shores, tiny grass and flower tiles. Beautiful lush detailed videogame region map. NO labels, text or frame. Landscape aspect ratio exactly 24:19. Scale the composition without cropping, same framing as guide.
+
+REPLACE each guide red block with a compact attractive TOWN CLUSTER centered exactly on that block: Indigo Plateau league hall; Pewter stone city/museum; Cerulean blue-roof town; Viridian green-roof town; Pallet TWO little homes and Oak's lab (no Pokemon Center); Celadon garden city and small department store; Saffron golden city with tiny tall Silph HQ; Vermilion orange harbor town and S.S.Anne docked just south; Lavender purple town with tower east; Fuchsia pink town; Cinnabar red-roof island town with research lab. All 11 original red blocks become exactly 11 clusters. Town size same as original red block (at most 12 map units wide). Indigo at (38,45), Pewter(60,56), Cerulean(170,45), Lavender(214,78), Vermilion(170,111), Celadon(137,78), Fuchsia(148,144), Cinnabar(60,166), Saffron(170,78), Viridian(60,100), Pallet(60,133). Coordinates on a 240x190 canvas.
+
+Replace purple squares with landmarks at the EXACT square centers: Mt.Moon at(115,45), Victory Road at(38,57), Viridian Forest at(60,79), Cerulean Cave at(155,34), Rock Tunnel at(214,49), Power Plant(227,61), Pokemon Tower(222,76), Safari Zone(148,129), Seafoam(104,166), Diglett cave Route11 entrance(182,107), league checkpoint(38,96). Add Diglett cave Route2 entrance at(69,67). Safari is ABOVE Fuchsia, not below. Cinnabar is DIRECTLY below Pallet. Cerulean Cave is ABOVE LEFT of Cerulean. Rock Tunnel is ABOVE Lavender. Seafoam is EAST of Cinnabar. Bill's single tiny cottage at(198,23).
+
+Preserve all cream path geometry from the guide EXACTLY and turn it into narrow warm-sand walking routes with darker edges. Do not add any new surface path. North-south routes MUST remain connected. Route 3 leaves Pewter EAST then turns NORTH at x=104 to meet Route4 at y45. Route4 passes through MtMoon and reaches Cerulean. Route25 east from NuggetBridge ends at Bill's cottage. Routes12/13/14/15 make the guide's south-eastern stair-step loop toward Fuchsia. Route16/17/18 form the guide's western cycling loop (x93), never replace it with a connection to Viridian. Route22 west from Viridian, Route23 north to Indigo. 
+Keep cyan routes as BLUE WATER with small dashed pale cyan NAVIGATION LINES, not land bridges. Cinnabar and Seafoam must be islands separated from mainland by water. Route21 sea north/south between Pallet and Cinnabar; Route20 sea west/east between Cinnabar and Seafoam and then Route19 to Fuchsia.
+Paint detailed forest canopies, ochre mountains around MtMoon and Indigo, tiny ledges, sea caves and grass BETWEEN the paths without obscuring the guide's routes. Central blue area is water with Safari on the land patch north of Fuchsia. Keep coastline roughly aligned with guide. No additional road, no mystery towns, no giant Pokemon. Fully top down orthographic, authentic clean pixel clusters and pixel edges, no blur, no 3D. This is a faithful artistic rendering of the geometry in the guide.
+
+LANDMARK REFINEMENT
+Edit this map with ONLY these local corrections. Preserve its exact canvas, composition, path network, coastline, all 11 town positions, other buildings, colors, and GBA pixel art. Do not redesign or move any towns.
+1. Viridian Forest: the pair of green-roof buildings on the western vertical route at 25% canvas width, 40% canvas height are WRONG. Remove both green buildings and replace that small area with an unmistakable dense miniature forest canopy, with the existing north-south warm sand path visibly winding through the center. This area is a FOREST, not a town. Keep the slate-roof Pewter city just north and orange-roof Viridian city just south unchanged.
+2. Mt. Moon: on the long top horizontal road at 48% width,24% height, the tiny gray statue/tower is WRONG. Replace it with a real dark cave entrance in a rocky mountain outcrop, integrated with the large mountain directly above. The route enters the mountain from the west portal and emerges from an east portal. Keep the existing exact route centerline. This cave is the connector on the road, not a statue next to the road.
+3. Cerulean Cave: currently there are two cave openings northwest of the blue Cerulean city. Keep ONLY the LOWER opening at approx64%width,16%height, with a small blue-water approach east to Nugget Bridge. Remove the UPPER cave at approx66%width,7%height, filling it with natural cliff and trees. Keep the upper river/pool. No second decorative cave.
+4. Diglett's Cave northern entrance: add a tiny rocky cave mouth immediately right of the western north/south road between Pewter and the forest, approx29%width,35%height. Do not add a new town or long surface road.
+5. Cinnabar: remove the small active volcanic cone on the southwest island, replace it with a low gray roof ruined mansion. Keep Cinnabar town and island position unchanged.
+No labels or new text. Do not change any other pixels except immediate surroundings needed to blend the five corrections. Keep all roads, towns and islands in place.
+
+References
+https://archives.bulbagarden.net/wiki/File:KantoTownMap.png
+https://github.com/pret/pokefirered/blob/master/src/data/region_map/region_map_sections.json
+https://github.com/pret/pokefirered/blob/master/src/data/region_map/region_map_layout_kanto.h
+
+Scope: approval-only files under previews/map-art-direction. No changes to game source, travel, saves or releases.
+

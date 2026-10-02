@@ -1,0 +1,144 @@
+/* Android handheld profile. At the Nova's 1280 x 960 / 4.5-inch panel,
+   28px body text is 2mm high and 72px menu targets are 5.1mm high.
+   Keep the design viewport and board raster unchanged; reflow the UI around it. */
+html.kanto-handheld{--handheld-text:28px;--handheld-action:32px;background:#000}
+.kanto-handheld body{background:#000;font-weight:600}
+.kanto-handheld [role=dialog],.kanto-handheld .panel:not(#gamePanel),.kanto-handheld .overlay,.kanto-handheld .starter-screen{font-size:var(--handheld-text);line-height:1.35}
+.kanto-handheld [role=dialog] *, .kanto-handheld .panel:not(#gamePanel) *, .kanto-handheld .overlay *, .kanto-handheld .starter-screen *{font-size:inherit!important;line-height:inherit;letter-spacing:normal}
+.kanto-handheld [role=dialog] h2,.kanto-handheld .panel:not(#gamePanel) h2,.kanto-handheld .overlay h2{font-size:36px!important;line-height:1.25}
+.kanto-handheld [role=dialog] button,.kanto-handheld [role=dialog] select,.kanto-handheld [role=dialog] input,.kanto-handheld .panel:not(#gamePanel) button,.kanto-handheld .panel:not(#gamePanel) select,.kanto-handheld .panel:not(#gamePanel) input{font-size:var(--handheld-action)!important;min-height:72px;max-width:100%;white-space:normal;overflow-wrap:break-word}
+.kanto-handheld button,.kanto-handheld select,.kanto-handheld input{scroll-margin:18px}
+.kanto-handheld button:focus,.kanto-handheld select:focus,.kanto-handheld input:focus,.kanto-handheld .menu-focus{outline:5px solid #edb52e!important;outline-offset:2px;box-shadow:0 0 0 7px #172d32!important}
+.kanto-handheld .dex-shell{grid-template-rows:76px minmax(0,1fr)}
+.kanto-handheld .header{height:76px;min-height:76px}
+.kanto-handheld .brand h1{font-size:32px}
+.kanto-handheld #mainMenuBtn{font-size:28px;min-height:60px;padding:8px 18px}
+.kanto-handheld .controls-card,.kanto-handheld .pc-shell,.kanto-handheld .oak-shell,.kanto-handheld .town-card,.kanto-handheld .dex-detail-card,.kanto-handheld .title-card:not(.title-card-hero){width:min(1180px,96vw);max-height:94vh;overflow:auto;padding:24px;scroll-padding:20px}
+.kanto-handheld .compact-dialog{width:min(1080px,96vw)}
+.kanto-handheld .compact-menu-grid{gap:14px}
+.kanto-handheld .compact-menu-grid button{padding:12px 16px;min-height:76px}
+.kanto-handheld .menu-hint{margin:18px 0 0}
+.kanto-handheld .options-grid,.kanto-handheld .oak-grid{grid-template-columns:minmax(0,1fr);gap:20px}
+.kanto-handheld .options-card{padding:22px}
+.kanto-handheld .options-card h3{margin-bottom:18px}
+.kanto-handheld .comfort-settings{gap:18px}
+.kanto-handheld .comfort-settings input[type=checkbox]{width:38px;height:38px;min-height:38px}
+.kanto-handheld input[type=range]{height:58px;min-height:58px}
+.kanto-handheld .control-map-row{grid-template-columns:minmax(0,1fr) 300px;gap:18px;padding:16px}
+.kanto-handheld .soundtrack-field{gap:12px;margin-top:20px}
+.kanto-handheld .soundtrack-field select{width:100%;min-width:0}
+.kanto-handheld .collection-tools{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.kanto-handheld .collection-tools label:first-child{grid-column:span 2}
+.kanto-handheld .dex-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kanto-handheld .pc-columns{grid-template-columns:minmax(0,1fr);gap:20px}
+.kanto-handheld .pc-team-grid,.kanto-handheld .pc-box-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kanto-handheld .pc-card-name{white-space:normal}
+.kanto-handheld .pc-card canvas{width:96px;height:96px}
+.kanto-handheld .trainer-card-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kanto-handheld .title-card-hero{width:min(1180px,96vw);max-height:94vh;overflow:auto}
+.kanto-handheld .title-actions{gap:14px}
+.kanto-handheld .oak-lab-card{grid-template-columns:30% 70%;grid-template-rows:88px minmax(0,1fr) auto;font-size:28px}
+.kanto-handheld .oak-decisions{justify-content:flex-start;padding:18px;scroll-padding:16px}
+.kanto-handheld .oak-dialogue-box{min-height:160px;max-height:35vh;overflow:auto;padding:18px}
+.kanto-handheld .oak-name-keys button{min-height:60px;padding:4px}
+.kanto-handheld .oak-lab-card header button{min-height:60px}
+.kanto-handheld .oak-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kanto-handheld .pixel-map-modal .fly-card{width:98vw;max-width:1500px;grid-template-columns:minmax(0,1fr) 360px;padding:16px;gap:14px}
+.kanto-handheld .pixel-map-modal #flyMapInfo{height:168px;min-height:168px;padding:12px;overflow:auto;line-height:1.35}
+.kanto-handheld .pixel-map-modal #flyDestinations{gap:14px;padding:12px;scroll-padding:16px}
+.kanto-handheld .pixel-map-modal #flyDestinations{gap:0}
+.kanto-handheld .pixel-map-modal #flyDestinations button+button{margin-top:12px}
+.kanto-handheld #pixelMapLabels{margin-right:12px}
+.kanto-handheld #pixelMapLegend{font-size:22px!important;line-height:1.25}
+/* Dense live HUD: six readable party cards and essential shortcuts. */
+.kanto-handheld body .fullscreen-game>.header{height:112px;min-height:0;gap:6px;top:6px}
+.kanto-handheld body .fullscreen-game .brand h1{font-size:28px}
+.kanto-handheld .fullscreen-game .lights{display:none}
+.kanto-handheld body .fullscreen-game #mainMenuBtn{height:56px;min-height:56px;font-size:28px;padding:4px 18px}
+.kanto-handheld body .fullscreen-game .third{padding-top:124px}
+.kanto-handheld body .compact-trainer{height:304px!important;flex:none}
+.kanto-handheld body .compact-trainer>.screen{grid-template-rows:134px minmax(0,1fr);gap:8px}
+.kanto-handheld body .compact-hold,.kanto-handheld body .compact-next{font-size:24px;grid-template-rows:28px 72px 28px;gap:3px}
+.kanto-handheld body .compact-hold canvas,.kanto-handheld body #next{width:108px;height:72px}
+.kanto-handheld body .compact-hold small{font-size:22px;line-height:26px;min-height:26px;white-space:normal}
+.kanto-handheld body .compact-numbers .k{font-size:22px}
+.kanto-handheld body .compact-numbers .v{font-size:28px;line-height:32px}
+.kanto-handheld body .compact-data .rowline{font-size:24px;line-height:28px;margin:8px 0;gap:2px}
+.kanto-handheld .compact-data #routeName{width:100%}
+.kanto-handheld .app.gym-theme .compact-data #routeName{display:none}
+.kanto-handheld body .compact-team .pixel-title{font-size:26px;line-height:32px;margin-bottom:6px}
+.kanto-handheld body #teamGrid .team-slot{padding:6px 4px;gap:3px;min-height:0;overflow:hidden;justify-content:center}
+.kanto-handheld body #teamGrid .team-slot canvas{width:64px;height:64px;margin:0 auto}
+.kanto-handheld body .compact-mon-name{font-size:23px;line-height:26px;letter-spacing:-.8px;white-space:normal;overflow-wrap:normal}
+.kanto-handheld body .compact-mon-name small{display:block;font-size:22px;line-height:24px;letter-spacing:0}
+.kanto-handheld body .team-bar-row{font-size:22px;line-height:24px;grid-template-columns:28px minmax(0,1fr);gap:2px}
+.kanto-handheld body .team-bar-row:nth-last-of-type(1)>span:first-child{font-size:18px}
+.kanto-handheld body .team-bar{height:26px}
+.kanto-handheld body .team-bar-row>span:last-child{line-height:26px;font-size:20px}
+.kanto-handheld body .compact-active{font-size:18px;line-height:20px;padding:2px 5px}
+.kanto-handheld #teamGrid .status-tag{font-size:20px;line-height:24px}
+.kanto-handheld body .compact-map>.screen{padding:10px;gap:6px;justify-content:flex-start;overflow:auto}
+.kanto-handheld body .map-panel-title{font-size:26px;line-height:30px;flex-wrap:wrap;margin:0;gap:3px}
+.kanto-handheld body #mapRouteText{font-size:24px;text-align:left;max-width:100%;width:100%}
+.kanto-handheld body #kantoMap{width:100%;max-width:250px;height:auto;margin:0 auto}
+.kanto-handheld .app.gym-theme #kantoMap{max-width:160px}
+.kanto-handheld body .wild-box{display:block;position:relative;padding:8px;margin:0}
+.kanto-handheld body #wildPortrait{width:56px;height:56px;float:left;margin:0 8px 4px 0}
+.kanto-handheld .wild-hp-row{clear:both}
+.kanto-handheld body .wild-info b{font-size:26px;line-height:30px}
+.kanto-handheld body .wild-info .tiny{font-size:22px;line-height:26px}
+.kanto-handheld body .wild-hp-row{font-size:22px;line-height:26px;grid-template-columns:28px minmax(0,1fr) auto}
+.kanto-handheld body .wild-hp-meter{height:18px}
+.kanto-handheld body #battleFeedback{font-size:24px;line-height:28px;padding:8px;margin:0}
+.kanto-handheld body #battleQueued,.kanto-handheld body #battleDamage{font-size:22px;line-height:26px}
+.kanto-handheld body .gym-mini{grid-template-columns:58px minmax(0,1fr);margin:0}
+.kanto-handheld .gym-mini .badge-art{width:54px;height:48px}
+.kanto-handheld body .gym-mini b{font-size:24px;line-height:28px}
+.kanto-handheld body .gym-mini .tiny{font-size:22px;line-height:26px}
+.kanto-handheld .compact-quick-actions{margin-top:auto;padding-top:6px}
+.kanto-handheld .compact-quick-actions button{min-height:64px;font-size:26px;padding:6px 2px}
+.kanto-handheld #quickDex,.kanto-handheld #quickTrainer{display:none}
+.kanto-handheld body .compact-team{padding:6px}
+.kanto-handheld body .compact-team>.screen{padding:8px}
+.kanto-handheld body #teamGrid{grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(6,minmax(0,1fr));gap:6px}
+.kanto-handheld body #teamGrid .team-slot{display:grid;grid-template-columns:64px minmax(0,1fr);grid-template-rows:24px 23px 23px;padding:4px 6px;gap:1px 8px;align-content:center}
+.kanto-handheld body #teamGrid .team-slot canvas{grid-column:1;grid-row:1/4;width:56px;height:56px;align-self:center;margin:0 auto 12px}
+.kanto-handheld body .compact-mon-name{grid-column:2;grid-row:1;font-size:23px;line-height:24px;text-align:left;white-space:nowrap}
+.kanto-handheld body .compact-mon-name small{display:inline;font-size:20px}
+.kanto-handheld body .team-bar-row{grid-column:2;grid-template-columns:32px minmax(0,1fr);height:23px}
+.kanto-handheld body .team-bar,.kanto-handheld body .team-bar-row>span:last-child{height:23px;line-height:23px}
+.kanto-handheld body .compact-active{top:auto;bottom:2px;left:8px;font-size:16px;line-height:18px;padding:0;background:#f4efc5}
+.kanto-handheld body #teamGrid .status-tag{position:absolute;left:4px;bottom:3px;font-size:16px;line-height:18px;max-width:68px;overflow-wrap:break-word;background:#f4efc5}
+.kanto-handheld body #teamGrid .team-slot.empty{display:flex;font-size:24px;opacity:1;color:#416347}
+.kanto-handheld .rocket-scene-copy{justify-content:flex-start;scroll-padding:18px}
+.kanto-handheld .rocket-scene-card{height:calc(100vh - 32px)}
+.kanto-handheld .rocket-scene-copy #rocketDialogue{line-height:1.35}
+.kanto-handheld .nickname-card{width:min(1080px,94vw);font-size:var(--handheld-text)!important}
+.kanto-handheld .rocket-chapters{grid-template-columns:minmax(0,1fr)}
+.kanto-handheld .gym-intro-card{width:min(1180px,96vw);max-height:94vh;overflow:auto;padding:22px;scroll-padding:20px}
+.kanto-handheld .gym-intro-stage,.kanto-handheld .elite-intro .gym-intro-stage{grid-template-columns:36% minmax(0,1fr);grid-template-areas:"art copy" "quote quote";align-items:start;gap:18px}
+.kanto-handheld .gym-leader-art{grid-area:art;max-width:100%}
+.kanto-handheld .gym-intro-copy{grid-area:copy}
+.kanto-handheld .gym-intro-quote{grid-area:quote;max-width:none;width:100%;margin:0;padding:14px}
+.kanto-handheld #adventureSlotCards{grid-template-columns:minmax(0,1fr)}
+.kanto-handheld .slot-team{grid-template-columns:repeat(6,minmax(0,1fr));min-height:0}
+.kanto-handheld .slot-empty p{max-width:none}
+.kanto-handheld .slot-empty-mark{margin:12px 0}
+.kanto-handheld .expansion-card{max-width:1180px}
+.kanto-handheld #rogueChoices{grid-template-columns:minmax(0,1fr)}
+.kanto-handheld #championTeam{grid-template-columns:repeat(3,minmax(0,1fr))}
+.kanto-handheld .intro-box{max-height:96vh;overflow:auto}
+.kanto-handheld #studioIntro .intro-kicker,.kanto-handheld #studioIntro #introSub,.kanto-handheld #studioIntro .intro-status{font-size:24px!important;line-height:1.35;letter-spacing:0}
+.kanto-handheld #studioIntro #introSub{max-width:none}
+.kanto-handheld .intro-prompt,.kanto-handheld .overlay button{font-size:32px;min-height:72px}
+.kanto-handheld .catchcard{max-width:95%;font-size:24px;line-height:1.35}
+.kanto-handheld .catchcard b,.kanto-handheld .catchcard p,.kanto-handheld .catchcard small,.kanto-handheld .catchcard #catchSub{font-size:24px!important}
+.kanto-handheld #legendaryTrialInfo,.kanto-handheld #practiceFreeInfo{font-size:24px;line-height:1.35;padding:12px}
+.kanto-handheld #practiceFreeInfo strong{font-size:28px;line-height:1.35}
+.kanto-handheld .legendary-trial #kantoMap{max-width:160px}
+@media(min-width:1600px){
+ html.kanto-handheld{--handheld-text:32px;--handheld-action:36px}
+ .kanto-handheld body .compact-map>.screen{gap:12px}
+ .kanto-handheld body #kantoMap{max-width:360px}
+ .kanto-handheld .compact-quick-actions button{min-height:72px}
+}

@@ -1,0 +1,13 @@
+# Generated builds, tooling and private Android signing identity
+.android-tools/
+android/out/
+android/assets/
+android/signing/
+android/qa-results/
+builds/
+releases/
+tests/results/
+*.log
+__pycache__/
+.DS_Store
+Thumbs.db

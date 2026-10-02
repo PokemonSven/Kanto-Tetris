@@ -1,0 +1,33 @@
+/* The entire supplied illustration stays visible at its original aspect ratio.
+   4:3 stacks art and controls; widescreen gives the menu its own right column. */
+#titleScreen{padding:16px;background:radial-gradient(ellipse at top,#304c35,#101f1b 70%,#080f10)}
+#titleScreen:before{display:none}
+#titleScreen .title-card-hero{width:calc(100vw - 32px);height:calc(100vh - 32px);max-height:none;max-width:2000px;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;gap:16px;padding:14px;border:4px solid #759363;background:#11271f;box-shadow:0 12px 40px #0008;overflow:hidden}
+#titleScreen .title-card-hero:after{display:none}
+#titleScreen .title-hero-art{width:100%;height:100%;min-height:0;max-width:none;margin:0;background:transparent;border:0;border-radius:0;box-shadow:none;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#titleScreen .title-hero-art img{width:100%;height:100%;min-height:0;object-fit:contain;object-position:center;image-rendering:pixelated}
+#titleScreen .title-menu{position:relative;z-index:1;min-width:0;min-height:0;max-height:52vh;overflow:auto;padding:8px 10px 10px;scroll-padding:12px}
+#titleScreen .title-screen-meta{margin:0 0 12px}
+#titleScreen .title-screen-badge{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#titleScreen .title-track{margin:0;padding:0;border:0;background:transparent;color:#d6e7ba;font-size:clamp(11px,1.1vw,18px);line-height:1.5}
+#titleScreen .title-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0}
+#titleScreen .title-start{width:100%;min-width:0;min-height:54px;margin:0;padding:12px 14px;font-size:clamp(14px,1.6vw,24px);line-height:1.35;border:3px solid #071b19;box-shadow:3px 4px 0 #071b19;overflow-wrap:break-word;scroll-margin:12px}
+#titleScreen .title-start[hidden]{display:none!important}
+#titleScreen .title-start small{font-size:clamp(12px,1vw,16px);line-height:1.4;margin-top:6px}
+/* Keep the resume destination visible; the full party and timestamp are in Backups. */
+#titleScreen .title-start small~small{display:none}
+#titleScreen .title-help{margin-top:16px;color:#e0ebcd;font-size:clamp(11px,1.05vw,17px);line-height:1.5}
+.kanto-handheld #titleScreen .title-track,.kanto-handheld #titleScreen .title-track span,.kanto-handheld #titleScreen .title-help,.kanto-handheld #titleScreen .title-start small{font-size:24px!important;line-height:1.4}
+@media(min-aspect-ratio:8/5) and (min-width:900px){
+ #titleScreen .title-card-hero{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:22px;padding:20px}
+ #titleScreen .title-menu{align-self:center;max-height:100%;padding:12px}
+ #titleScreen .title-actions{grid-template-columns:minmax(0,1fr)}
+ #titleScreen .title-screen-meta{margin-bottom:20px}
+}
+@media(max-width:640px){
+ #titleScreen{padding:8px}
+ #titleScreen .title-card-hero{width:calc(100vw - 16px);height:calc(100vh - 16px);padding:8px;gap:8px}
+ #titleScreen .title-menu{max-height:60vh;padding:6px}
+ #titleScreen .title-actions{gap:10px}
+ #titleScreen .title-start{padding:10px 6px}
+}

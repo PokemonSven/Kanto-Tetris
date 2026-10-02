@@ -1,0 +1,10 @@
+[
+  "spawn",
+  "move",
+  "rotate",
+  "soft",
+  "hard",
+  "lock",
+  "speed",
+  "speedMultiplier"
+]

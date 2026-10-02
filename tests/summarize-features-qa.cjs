@@ -1,0 +1,20 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..'),dir=path.join(root,'android/qa-results/1.7.6');
+const names=['features-final-4x3','features-final-wide','controls-final','pause','brock','backups','ui','ui-1080p','native-final-4x3','native-rp4','files-final','preview-battle-wide-final','preview-battle-4x3-final','preview-dex-4x3-final','preview-pc-clean','preview-detail-final','preview-tutorial-final'];
+const suites=names.map(name=>{
+ const text=fs.readFileSync(path.join(dir,name+'.txt'),'utf8');
+ if(!text.includes('INSTRUMENTATION_RESULT: result=PASS'))throw Error(name+' did not pass');
+ const line=text.split('\n').find(s=>s.startsWith('INSTRUMENTATION_RESULT: report='));
+ const direct=text.split('\n').find(s=>s.startsWith('INSTRUMENTATION_RESULT: tests='));
+ const report=line?JSON.parse(JSON.parse(line.slice(line.indexOf('=')+1))):{tests:JSON.parse(direct.slice(direct.indexOf('=')+1))};
+ if(report.tests.some(t=>t.result!=='PASS'))throw Error(name+' has a failing test');
+ return {suite:name,passed:report.tests.length};
+});
+const browser=JSON.parse(fs.readFileSync(path.join(dir,'browser-features.json'),'utf8'));
+if(browser.failed||browser.passed!==20)throw Error('Browser checks did not pass');
+suites.push({suite:'browser-features',passed:browser.passed});
+const apk=path.join(root,'releases/Kanto_Tetris_1.7.6_Android.apk');
+const summary={build:'1.7.6',checkedAt:new Date().toISOString(),environment:'Android 11 x86_64 emulator, WebView 83.0.4103.106; desktop browser',suites,physicalDevicesTested:[],apk:{bytes:fs.statSync(apk).size,sha256:crypto.createHash('sha256').update(fs.readFileSync(apk)).digest('hex')}};
+fs.writeFileSync(path.join(dir,'summary.json'),JSON.stringify(summary,null,2)+'\n');
+fs.writeFileSync(apk+'.sha256',summary.apk.sha256+'  '+path.basename(apk)+'\n');
+console.log(JSON.stringify(summary,null,2));

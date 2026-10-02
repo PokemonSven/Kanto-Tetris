@@ -1,0 +1,19 @@
+#adventureSlotsModal{z-index:94;background:rgba(10,25,33,.95)}
+.adventure-slots-card{width:min(1160px,96vw);max-height:94vh;overflow:auto;background:#e0f8cf;border:6px double #173b28;box-shadow:0 0 0 6px #d34e45;border-radius:10px;padding:22px;color:#173428;box-sizing:border-box}
+.adventure-slots-card header,.adventure-slots-card footer{display:flex;align-items:center;justify-content:space-between}
+.adventure-slots-card header button,.adventure-slots-card footer button{margin-left:16px;flex-shrink:0}
+.adventure-slots-card h2{font-size:24px;margin:8px 0 12px}.adventure-slots-card header small{font-size:10px;letter-spacing:1px}
+#adventureSlotsStatus{font-size:12px;line-height:1.6;margin:8px 0 18px;min-height:36px}
+#adventureSlotCards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.adventure-slot{display:flex;flex-direction:column;padding:16px;background:#cce9ad;border:3px solid #34533a;min-width:0;box-shadow:3px 3px 0 #879979}
+.slot-number{font-size:11px;font-weight:bold;letter-spacing:.5px}.adventure-slot h3{font-size:23px;line-height:1.2;margin:14px 0 6px;overflow-wrap:anywhere}
+.adventure-slot p{font-size:12px;line-height:1.6}.slot-location{min-height:38px;margin:8px 0}.slot-badges{margin:0 0 8px}.slot-date{font-size:10px!important;margin-top:auto;padding-top:12px}
+.slot-team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;min-height:166px;margin:4px 0 8px;align-content:start}
+.slot-team>div{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}.slot-team canvas{width:56px;height:56px;image-rendering:pixelated;background:#b5cf9b;border:1px solid #6c895a}
+.slot-team span{font-size:10px;line-height:1.3;max-width:100%;overflow-wrap:anywhere;margin-top:4px}.slot-team small{font-size:9px;line-height:1.4}
+.slot-actions{display:flex;flex-direction:column}.slot-actions button+button{margin-top:8px}.slot-primary{background:#f3dfb7!important;font-weight:bold;border:3px solid #173b28!important;min-height:46px}
+.adventure-slots-card button{min-height:36px;padding:10px 12px;font:inherit;font-size:11px;line-height:1.4;background:#e0f8cf;border:2px solid #34533a;color:#173428}
+.slot-empty{text-align:center;background:#d7ecc3;border-style:dashed}.slot-empty .slot-number{text-align:left}.slot-empty-mark{font-size:64px;line-height:1;margin:38px 0 16px;color:#7d9b66}.slot-empty p{max-width:230px;align-self:center}.slot-empty .slot-primary{margin-top:auto}
+.adventure-slots-card footer{margin-top:20px;font-size:10px;line-height:1.5}.adventure-slots-card button:focus{outline:3px solid #ed900d;outline-offset:3px}
+@media(max-height:760px){.adventure-slots-card{padding:16px}.adventure-slots-card h2{font-size:20px}.adventure-slot{padding:12px}.adventure-slot h3{margin-top:9px}.slot-team{min-height:144px;gap:5px}.slot-team canvas{width:48px;height:48px}.slot-date{padding-top:6px}.adventure-slots-card footer{margin-top:14px}}
+@media(max-width:760px){#adventureSlotCards{grid-template-columns:1fr}.adventure-slots-card header{align-items:flex-start}.adventure-slots-card h2{font-size:17px}.slot-team{grid-template-columns:repeat(6,minmax(0,1fr));min-height:0}.adventure-slots-card footer{flex-wrap:wrap}.slot-empty-mark{margin:14px 0}.slot-team canvas{width:40px;height:40px}.slot-empty .slot-primary{margin-top:12px}}

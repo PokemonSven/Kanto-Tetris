@@ -1,0 +1,61 @@
+/* Approved 4:3 / 16:9 layout. The board always keeps square cells. */
+:root{--board-h:760px;--compact-side:330px}
+html,body{height:100%;overflow:hidden}
+.app{max-width:none;width:100%;height:100%;padding:0}
+.dex-shell{width:calc(var(--board-h)/2 + var(--compact-side) + 94px);max-width:calc(100vw - 24px);height:calc(100dvh - 12px);margin:6px auto;padding:8px 12px;display:grid;grid-template-rows:36px minmax(0,1fr);gap:8px;border-width:4px;border-radius:20px}
+.header{margin:0;height:36px;flex-direction:row;align-items:center;gap:12px}
+.brand{gap:13px}.brand h1{font-size:27px;letter-spacing:.02em;white-space:nowrap}.brand .lights{gap:6px}.blue-light{width:36px;height:36px;border-width:4px;box-shadow:0 0 0 2px #17334a,inset -6px -7px #2699c4}.dot{width:9px;height:9px;border-width:1px}
+#mainMenuBtn{height:38px;min-width:92px;padding:7px 15px;font-size:13px}
+.panel{min-height:0;min-width:0}.panel.active:not(#gamePanel){overflow:auto;padding:8px 9px 18px;scrollbar-gutter:stable}
+#gamePanel.active{display:flex;flex-direction:column}
+.game-layout{height:100%;min-height:0;grid-template-columns:minmax(0,1fr) var(--compact-side);gap:16px;align-items:stretch}
+.play-column{display:flex;flex-direction:column;gap:8px;min-height:0;min-width:0}
+.game-layout .screen-frame{padding:9px;border-radius:10px}
+.compact-trainer{height:78px!important;flex:none;padding:4px!important}
+.compact-trainer>.screen{height:100%;display:grid;grid-template-columns:minmax(0,1fr) 68px;gap:10px;padding:5px 8px;border-width:3px;box-shadow:inset 0 0 0 2px var(--mid)}
+.compact-data{min-width:0}.compact-numbers{display:flex;gap:18px;border-bottom:1px solid #93b678;padding-bottom:3px}
+.compact-numbers .stat{display:flex;align-items:baseline;gap:7px;padding:0;border:0}.compact-numbers .k{font-size:9px;font-weight:bold}.compact-numbers .v{font-size:18px;line-height:21px}
+.compact-data .rowline{font-size:9px;line-height:11px;margin:3px 0 2px;gap:5px}.compact-data #routeName{min-width:0}.compact-data #gymGoalText{text-align:right;flex-shrink:0;max-width:52%}
+.compact-data>.meter{height:6px;border-width:1px;padding:1px}
+.compact-next{border-left:1px solid #93b678;padding-left:9px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;font-size:9px}
+#next{width:52px;height:38px;border-width:1px}
+.game-layout .compact-board-frame{flex:1;min-height:0;padding:6px;display:grid;place-items:center}
+.compact-board-frame .boardbox{width:calc(var(--board-h)/2 + 6px);height:calc(var(--board-h) + 6px);max-width:100%;padding:0;border-width:3px;box-shadow:none}
+#game{display:block;width:calc(var(--board-h)/2);height:var(--board-h);border:0;max-width:100%;image-rendering:pixelated}
+#overlay{inset:0;padding:16px}#overlay h2{font-size:23px}#overlay p{font-size:12px}#overlay small{font-size:9px}
+.third{grid-column:auto;display:flex;flex-direction:column;gap:12px;min-height:0;min-width:0}
+.compact-map{flex:none}.compact-map>.screen,.compact-team>.screen{padding:10px;border-width:3px;box-shadow:inset 0 0 0 2px var(--mid)}
+.map-panel-title{font-size:12px;letter-spacing:0;margin-bottom:9px;gap:6px}#mapTitle{padding:0}#mapRouteText{font-size:9px;border-width:1px;padding:3px 5px;max-width:58%}
+#kantoMap{width:240px;max-width:100%;margin:auto;border-width:2px}
+.wild-box{grid-template-columns:66px minmax(0,1fr);gap:9px;padding:6px;margin-top:8px;border-width:3px}
+#wildPortrait{width:66px;height:66px;border-width:1px}.wild-info{min-width:0}.wild-info b{font-size:10px;line-height:1.4;display:block}.wild-info .tiny{font-size:8px;line-height:1.45}.wild-hp-row{font-size:7px;gap:4px;grid-template-columns:16px minmax(0,1fr) auto}.wild-hp-meter{min-width:0;height:9px;border-width:1px}.wild-battle-status{margin-top:4px}
+.gym-mini{grid-template-columns:47px minmax(0,1fr);gap:7px;margin-top:8px}.gym-mini b{font-size:11px}.gym-mini .tiny{font-size:9px;line-height:1.45}.gym-mini .badge-art{width:43px;height:38px;margin:0}.gym-mini-leader{width:43px;height:43px;border-width:1px}
+.compact-team{flex:1;min-height:0}.compact-team>.screen{height:100%;display:flex;flex-direction:column}.compact-team .pixel-title{font-size:12px;letter-spacing:0;border-bottom-width:3px;margin-bottom:9px;flex:none}
+#teamGrid{flex:1;min-height:0;grid-template-rows:repeat(3,minmax(112px,1fr));gap:8px}
+#teamGrid .team-slot{font:inherit;color:var(--ink);min-width:0;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:4px;padding:8px 9px 6px;border-width:2px;box-shadow:none;background:#d0e8b5}
+#teamGrid .team-slot.active{background:#f4efc5;outline:2px solid var(--ink);outline-offset:1px}
+#teamGrid .team-slot.empty{opacity:.5;align-items:center;font-size:10px;gap:5px;cursor:default}
+#teamGrid .team-slot canvas{width:49px;height:49px;border:1px solid #6a8460;background:#c9e8ae;margin:4px auto 0}
+.compact-mon-name{font-size:9px;font-weight:900;white-space:nowrap}.compact-mon-name small{font-size:8px;font-weight:400}
+.compact-active{position:absolute;left:5px;top:3px;font-size:6px;font-weight:bold}
+.team-bar-row{display:grid;grid-template-columns:17px minmax(0,1fr) 34px;gap:4px;align-items:center;font-size:6.5px;font-weight:900;text-align:left}.team-bar-row>span:last-child{text-align:right}.team-bar{height:7px;border:1px solid #526c44;background:#f2ffe5;padding:1px}.team-bar i{display:block;height:100%;background:#4e884d}.team-bar .mid{background:#ae8618}.team-bar .low{background:#bd443a}.team-bar .ko{background:#555}.team-exp i{background:#467f91}
+.compact-team .status-tag{font-size:7px;color:#803a35;font-weight:bold}
+.compact-hidden,[hidden]{display:none!important}
+#mainMenuModal,#questsModal,#uiCreditsModal{z-index:48}
+.compact-dialog{background:#e0f8cf;border:6px double #173428;box-shadow:0 24px 80px #0009;width:min(640px,96vw);padding:22px}
+.compact-dialog h2{border-bottom:3px double #173428;padding-bottom:12px;margin-bottom:16px;font-size:21px}
+.compact-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.compact-dialog button{border:2px solid #20362b;background:#f1dbc0;box-shadow:inset -2px -2px #c4a987;font-size:12px;min-height:43px;text-align:left;padding:10px 12px}
+.compact-menu-grid .primary{grid-column:1/-1;background:#345e42;color:#fff8dc;box-shadow:none}
+.compact-dialog .dialog-back{margin-top:16px;text-align:center}.compact-dialog .menu-hint{font-size:10px;margin:13px 0 0}.compact-dialog button:disabled{opacity:.45}
+#mainMenuStatus{font-size:12px;line-height:1.6;color:#8b1e13}#mainMenuStatus:empty{display:none}
+#questBoard{margin:0;border:0;padding:0}#questsModal .quest-card{padding:14px;margin:10px 0}#questsModal .quest-title{font-size:13px}#questsModal .quest-desc{font-size:12px;line-height:1.6}#questsModal .quest-progress-row{font-size:12px}#questsModal .quest-reward{font-size:10px;margin-top:9px}#questsModal .quest-head{font-size:13px}#questsModal .quest-list{max-height:none}
+#fieldTitle{display:flex;justify-content:space-between;align-items:center;gap:10px}#fieldTitle .money-pill{font-size:15px}#fieldItems .inventory-empty{display:grid;place-items:center;border:2px solid #728d61;min-height:72px;font-size:12px;color:#596e50}
+#fieldMenuModal .controls-card{background:#e0f8cf}#fieldMenuModal .field-partner canvas{width:54px;height:54px}.inventory-info{margin-top:6px}
+.compact-audio .music-controls{display:flex;flex-wrap:wrap;gap:8px}.compact-audio .tab{font-size:12px}.compact-audio .now-playing{font-size:11px;margin-top:12px;grid-column:auto}
+#portableSaveStatus{margin:12px 0}.compact-run-info{margin-top:15px}.compact-options-links{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}.compact-options-links button{padding:10px}
+#uiCreditsModal .art-credit{font-size:12px;line-height:1.8}#uiCreditsModal .footer{color:#173428;font-size:11px;line-height:1.7;text-align:left}
+@media(min-width:1600px){:root{--compact-side:366px}.dex-shell{padding:10px 14px;grid-template-rows:40px minmax(0,1fr)}.header{height:40px}.brand h1{font-size:31px}.blue-light{width:40px;height:40px}.compact-trainer{height:82px!important}.compact-trainer>.screen{padding:6px 9px}.compact-numbers .k{font-size:10px}.compact-numbers .v{font-size:20px}.compact-data .rowline{font-size:10px}#next{width:58px;height:42px}#kantoMap{width:270px}.compact-map>.screen,.compact-team>.screen{padding:11px}.map-panel-title,.compact-team .pixel-title{font-size:14px}#mapRouteText{font-size:10px}.wild-box{grid-template-columns:76px minmax(0,1fr);gap:12px;padding:7px}#wildPortrait{width:76px;height:76px}.wild-info b{font-size:12px}.wild-info .tiny{font-size:9px}.gym-mini b{font-size:12px}.gym-mini .tiny{font-size:10px}#teamGrid{grid-template-rows:repeat(3,minmax(128px,1fr))}#teamGrid .team-slot canvas{width:58px;height:58px}.compact-mon-name{font-size:10px}.compact-mon-name small{font-size:9px}.team-bar-row{font-size:7.5px}.compact-active{font-size:7px}}
+@media(max-height:850px) and (min-width:701px){:root{--compact-side:300px}.compact-map>.screen,.compact-team>.screen{padding:7px}#kantoMap{width:175px}.third{gap:8px}.game-layout{gap:10px}.wild-box{grid-template-columns:46px 1fr;padding:3px;margin-top:5px}#wildPortrait{width:46px;height:46px}.gym-mini{margin-top:4px;grid-template-columns:34px 1fr}.gym-mini .badge-art,.gym-mini-leader{width:32px;height:29px}#teamGrid{grid-template-rows:repeat(3,minmax(70px,1fr));gap:6px}#teamGrid .team-slot{padding:4px 7px;gap:2px}#teamGrid .team-slot canvas{width:34px;height:34px;margin-top:2px}.compact-team .pixel-title{margin-bottom:6px;font-size:11px}}
+/* Narrow portrait windows remain usable for menus; supported controller builds are landscape. */
+@media(max-width:700px){html,body{overflow:auto;height:auto}.app{height:auto}.dex-shell{height:auto;min-height:calc(100dvh - 12px);max-width:calc(100vw - 12px);padding:9px;grid-template-rows:38px auto}.header{height:38px}.brand{gap:7px}.brand h1{font-size:19px}.brand .dot{display:none}.blue-light{width:29px;height:29px}#mainMenuBtn{min-width:72px;font-size:11px;padding:6px}.game-layout{height:auto;grid-template-columns:minmax(0,1fr);gap:12px}.play-column{min-height:0}.compact-board-frame{min-height:calc(var(--board-h) + 30px)!important}.third{display:grid;grid-template-columns:1fr;min-height:0}.compact-team{min-height:430px}.panel.active:not(#gamePanel){overflow:visible}.compact-numbers{gap:12px}.compact-numbers .v{font-size:16px}.compact-data .rowline{font-size:8px}.compact-dialog{padding:15px}.compact-menu-grid{gap:7px}.compact-dialog button{font-size:11px}.sven-pc-layout{grid-template-columns:1fr}}

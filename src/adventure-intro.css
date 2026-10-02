@@ -1,0 +1,28 @@
+#oakIntroModal{z-index:140;background:#101d26;padding:12px;box-sizing:border-box}
+body #controlsConfirm{z-index:160}
+.oak-lab-card{position:relative;width:100%;max-width:1560px;height:calc(100dvh - 24px);max-height:1100px;overflow:hidden;margin:auto;border:6px solid #23374b;border-radius:12px;box-shadow:inset 0 0 0 4px #e2e5c0;display:grid;grid-template-columns:40% 60%;grid-template-rows:56px minmax(0,1fr) auto;color:#23374b;background:#bcc7a3;font-family:monospace;font-size:clamp(13px,1.4vw,21px)}
+.oak-lab-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;image-rendering:pixelated;opacity:.92}
+.oak-lab-card header{z-index:1;grid-column:1/-1;background:#23374bef;color:#fff6dc;display:flex;align-items:center;justify-content:space-between;padding:6px 16px;font-weight:bold;gap:12px}
+.oak-lab-card button{font:inherit;line-height:1.25;background:#fff9e8;color:#23374b;border:3px solid #526372;border-radius:6px;padding:12px;text-align:left;cursor:pointer;box-shadow:0 3px #23374b55;min-width:0}
+.oak-lab-card button:hover,.oak-lab-card button:focus-visible{outline:4px solid #efb642;outline-offset:1px;background:#fff1b9}
+.oak-lab-card button strong,.oak-lab-card button small{display:block}.oak-lab-card button small{font-size:.77em;line-height:1.5;margin-top:6px}
+.oak-lab-card header button{padding:6px 12px;font-size:.7em;flex-shrink:0}
+.oak-stage{position:relative;z-index:1;min-height:0;overflow:hidden}
+#oakPortrait{position:absolute;bottom:0;left:0;width:100%;height:94%;object-fit:contain;object-position:bottom;image-rendering:pixelated;filter:drop-shadow(5px 4px 0 #23374b55)}
+.oak-nameplate{position:absolute;bottom:10px;left:10%;right:10%;background:#23374bec;color:#fff9e8;padding:8px;text-align:center;font-size:.85em;border:2px solid #fff9e8}
+.oak-decisions{z-index:1;overflow:auto;min-height:0;padding:16px 20px;background:#e4eddfec;border-left:4px solid #23374b;display:flex;flex-direction:column;justify-content:center}
+.oak-decisions h2{font:inherit;font-size:1.2em;font-weight:bold;line-height:1.35;margin:0 0 16px}
+#oakChoices{display:grid;gap:12px}#oakChoices label{display:grid;gap:8px;font-weight:bold}#oakChoices input{font:inherit;padding:8px;box-sizing:border-box;width:100%;color:#23374b;background:#fff9e8}
+#oakChoices input[type=range]{padding:0;height:36px;accent-color:#387881}
+.oak-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.oak-mon-choices button{text-align:center}.oak-mon-choices canvas{display:block;width:96px;height:96px;margin:0 auto 6px;image-rendering:pixelated}
+.oak-name-keys{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:5px}.oak-name-keys button{padding:8px 0;text-align:center}
+.oak-dialogue-box{z-index:1;grid-column:1/-1;margin:10px;padding:18px 22px;background:#fffbea;border:4px solid #23374b;border-radius:10px;box-shadow:inset 0 0 0 3px #8cb5b5;min-height:130px;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box}
+.oak-dialogue-box p{margin:0 0 16px;line-height:1.55}.oak-dialogue-box small{font-size:.65em;color:#526372;line-height:1.4}
+#oakVisitor{position:absolute;bottom:8%;right:0;width:160px;height:160px;image-rendering:pixelated;z-index:3}.oak-sparks{display:none;position:absolute;top:28%;left:15%;color:#ffdf35;text-shadow:3px 3px #8b410a;font-size:100px;z-index:4}
+.oak-shocked .oak-sparks{display:block}.oak-shocked #oakPortrait{animation:oak-jolt .13s steps(2) 6}
+@keyframes oak-jolt{50%{transform:translate(7px,0) rotate(2deg)}}
+.comfort-still .oak-shocked #oakPortrait,.comfort-calm .oak-shocked #oakPortrait{animation:none}
+.oak-page{font-size:.8em;margin:0}#oakSettingsReturn{position:sticky;top:0;z-index:20;margin:12px;background:#fff1b9}#adventureSpeedSlider{width:100%;height:36px;accent-color:#387881}.oak-origin{color:#754a0d;font-weight:bold}
+@media(min-aspect-ratio:16/10){.oak-lab-card{grid-template-columns:43% 57%}.oak-decisions{padding:24px 32px}.oak-mon-choices canvas{width:112px;height:112px}.oak-dialogue-box{min-height:160px}.oak-starters{grid-template-columns:repeat(4,minmax(0,1fr))}.oak-starters button{padding:8px;font-size:.8em}.oak-starters canvas{width:96px;height:96px}}
+@media(max-height:740px){.oak-lab-card{grid-template-rows:42px minmax(0,1fr) auto;font-size:14px}.oak-decisions{padding:12px 16px}.oak-decisions h2{font-size:1.1em;margin-bottom:10px}#oakChoices,.oak-choice-grid{gap:8px}.oak-lab-card button{padding:8px}.oak-name-keys button{padding:4px}.oak-mon-choices canvas{width:72px;height:72px}.oak-dialogue-box{min-height:100px;padding:12px 16px;margin:8px}.oak-dialogue-box p{margin-bottom:8px}.oak-lab-card button small{font-size:.8em}}

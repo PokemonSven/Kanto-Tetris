@@ -80,3 +80,9 @@ Public-domain score reference: Mutopia Project, Music ID 528
 https://www.mutopiaproject.org/cgibin/piece-info.cgi?id=528
 
 Chiptune arrangement / Web Audio synthesis: Kanto Tetris project, 2026.
+
+
+1.8.16 asset provenance
+-----------------------
+Current title artwork, Kanto map and Pikachu marker provenance are recorded in src/assets/*source*.txt and src/assets/kanto-map-art-prompts.txt.
+Soundtrack track/source details are in music/SOURCES.json and src/assets/soundtrack.json.
